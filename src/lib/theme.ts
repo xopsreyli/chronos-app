@@ -52,16 +52,15 @@ const theme = createTheme({
         },
     },
     typography: {
-        fontFamily: '"Inter", "Roboto", "Helvetica", "Arial", sans-serif',
         h1: {
-            fontSize: '3rem',
+            fontSize: '3.5rem',
             fontWeight: 700,
             lineHeight: 1.2,
         },
         h2: {
-            fontSize: '2.25rem',
+            fontSize: '2rem',
             fontWeight: 600,
-            lineHeight: 1.3,
+            lineHeight: 1.2,
         },
         h3: {
             fontSize: '1.5rem',
@@ -71,10 +70,10 @@ const theme = createTheme({
         h4: {
             fontSize: '1.25rem',
             fontWeight: 600,
-            lineHeight: 1.4,
+            lineHeight: 1.5,
         },
         h5: {
-            fontSize: '1rem',
+            fontSize: '1.125rem',
             fontWeight: 600,
             lineHeight: 1.5,
         },
@@ -82,18 +81,6 @@ const theme = createTheme({
             fontSize: '0.875rem',
             fontWeight: 600,
             lineHeight: 1.5,
-        },
-        body1: {
-            fontSize: '1rem',
-            lineHeight: 1.6,
-        },
-        body2: {
-            fontSize: '0.875rem',
-            lineHeight: 1.6,
-        },
-        button: {
-            textTransform: 'none',
-            fontWeight: 500,
         },
     },
     shape: {

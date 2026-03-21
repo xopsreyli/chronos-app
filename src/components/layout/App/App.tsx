@@ -1,13 +1,16 @@
 import Header from '../Header/Header.tsx'
-import { ThemeProvider } from '@mui/material'
+import {CssBaseline, ThemeProvider, Box } from '@mui/material'
 import theme from '../../../lib/theme.ts'
 import { Outlet } from 'react-router'
 
 const App = () => {
     return (
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             <Header />
-            <Outlet />
+            <Box component='main'>
+                <Outlet />
+            </Box>
         </ThemeProvider>
     )
 }

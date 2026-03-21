@@ -1,5 +1,7 @@
+import Guest from "./Guest/Guest.tsx";
+
 const Home = () => {
-    return <></>
+    return <Guest />
 }
 
 export default Home

@@ -11,7 +11,7 @@ import { Link as RRLink } from 'react-router'
 
 const Header = () => {
     return (
-        <AppBar position="fixed">
+        <AppBar>
             <Container maxWidth="lg">
                 <Toolbar
                     disableGutters
