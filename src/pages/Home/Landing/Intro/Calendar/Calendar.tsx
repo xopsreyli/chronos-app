@@ -1,8 +1,25 @@
-import {alpha, Box, Paper, Stack, Table, TableBody, TableCell, TableHead, TableRow, Typography} from "@mui/material";
+import {
+    alpha,
+    Box,
+    Paper,
+    Stack,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+    Typography,
+} from '@mui/material'
 
-const WEEK_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+const WEEK_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
-const DATES: number[][] = [[1, 2, 3, 4, 5, 6, 7], [8, 9, 10, 11, 12, 13, 14], [15, 16, 17, 18, 19, 20, 21], [22, 23, 24, 25, 26, 27, 28], [29, 30, 31]]
+const DATES: number[][] = [
+    [1, 2, 3, 4, 5, 6, 7],
+    [8, 9, 10, 11, 12, 13, 14],
+    [15, 16, 17, 18, 19, 20, 21],
+    [22, 23, 24, 25, 26, 27, 28],
+    [29, 30, 31],
+]
 
 const Calendar = () => {
     return (
@@ -26,22 +43,15 @@ const Calendar = () => {
                 }}
             >
                 <Stack
-                    direction='row'
+                    direction="row"
                     sx={{
                         justifyContent: 'space-between',
                         alignItems: 'center',
                         mb: 2,
                     }}
                 >
-                    <Typography
-                        variant='h5'
-                    >
-                        March 2026
-                    </Typography>
-                    <Stack
-                        direction='row'
-                        spacing={1}
-                    >
+                    <Typography variant="h5">March 2026</Typography>
+                    <Stack direction="row" spacing={1}>
                         <Box
                             sx={{
                                 width: 8,
@@ -71,26 +81,28 @@ const Calendar = () => {
                             {WEEK_DAYS.map((weekday: string) => (
                                 <TableCell
                                     key={weekday}
-                                    align='center'
+                                    align="center"
                                     sx={{
                                         border: 'none',
-                                        color: 'text.secondary'
+                                        color: 'text.secondary',
                                     }}
-                                >{weekday}</TableCell>
+                                >
+                                    {weekday}
+                                </TableCell>
                             ))}
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {DATES.map((week: number[], i: number) => (
-                            <TableRow key={i}>{
-                                week.map((date: number) => (
+                            <TableRow key={i}>
+                                {week.map((date: number) => (
                                     <TableCell
                                         key={date}
-                                        align='center'
+                                        align="center"
                                         sx={{
                                             border: 'none',
                                             fontSize: '0.75rem',
-                                            p: 0
+                                            p: 0,
                                         }}
                                     >
                                         <Box
@@ -99,21 +111,24 @@ const Calendar = () => {
                                                 aspectRatio: '1',
                                                 alignContent: 'center',
                                                 ...(date === 10 && {
-                                                    backgroundColor: 'primary.main',
+                                                    backgroundColor:
+                                                        'primary.main',
                                                     borderRadius: '50%',
-                                                    color: 'background.paper'
-                                                })
+                                                    color: 'background.paper',
+                                                }),
                                             }}
-                                        >{date}</Box>
+                                        >
+                                            {date}
+                                        </Box>
                                     </TableCell>
-                                ))
-                            }</TableRow>
+                                ))}
+                            </TableRow>
                         ))}
                     </TableBody>
                 </Table>
             </Paper>
         </Box>
-    );
-};
+    )
+}
 
-export default Calendar;
+export default Calendar

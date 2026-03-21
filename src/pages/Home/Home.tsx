@@ -1,7 +1,7 @@
-import Guest from "./Guest/Guest.tsx";
+import Landing from './Landing/Landing.tsx'
 
 const Home = () => {
-    return <Guest />
+    return <Landing />
 }
 
 export default Home

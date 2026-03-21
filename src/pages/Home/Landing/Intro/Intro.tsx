@@ -1,6 +1,6 @@
-import {Toolbar, Stack, Grid} from "@mui/material";
-import Content from "./Content/Content.tsx";
-import Calendar from "./Calendar/Calendar.tsx";
+import { Toolbar, Stack, Grid } from '@mui/material'
+import Content from './Content/Content.tsx'
+import Calendar from './Calendar/Calendar.tsx'
 
 const Intro = () => {
     return (
@@ -16,7 +16,7 @@ const Intro = () => {
                 spacing={6}
                 sx={{
                     flex: 1,
-                    alignItems: "center",
+                    alignItems: 'center',
                 }}
             >
                 <Grid size={6}>
@@ -27,7 +27,7 @@ const Intro = () => {
                 </Grid>
             </Grid>
         </Stack>
-    );
-};
+    )
+}
 
-export default Intro;
+export default Intro

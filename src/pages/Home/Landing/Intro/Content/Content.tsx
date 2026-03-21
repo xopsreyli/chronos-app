@@ -1,16 +1,11 @@
-import {Box, Button, Stack, Typography} from "@mui/material";
-import {Link as RRLink} from "react-router";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { Box, Button, Stack, Typography } from '@mui/material'
+import { Link as RRLink } from 'react-router'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 const Content = () => {
     return (
-        <Stack
-            spacing={3}
-            useFlexGap
-        >
-            <Typography
-                variant="h1"
-            >
+        <Stack spacing={3} useFlexGap>
+            <Typography variant="h1">
                 Organize Your Time,{' '}
                 <Box
                     component="span"
@@ -22,13 +17,15 @@ const Content = () => {
                 </Box>
             </Typography>
             <Typography
-                color='text.secondary'
+                color="text.secondary"
                 sx={{
                     fontSize: '1.25rem',
                     lineHeight: '1.7',
                 }}
             >
-                Manage your calendars, events, reminders, and tasks all in one place. Stay on top of your schedule with our intuitive and powerful calendar app.
+                Manage your calendars, events, reminders, and tasks all in one
+                place. Stay on top of your schedule with our intuitive and
+                powerful calendar app.
             </Typography>
             <Stack
                 direction="row"
@@ -43,7 +40,7 @@ const Content = () => {
                     component={RRLink}
                     variant="contained"
                     color="primary"
-                    size='large'
+                    size="large"
                     endIcon={<ArrowForwardIcon />}
                     sx={{
                         textTransform: 'capitalize',
@@ -57,8 +54,8 @@ const Content = () => {
                 <Button
                     to="/signin"
                     component={RRLink}
-                    variant='outlined'
-                    size='large'
+                    variant="outlined"
+                    size="large"
                     sx={{
                         borderColor: 'grey.300',
                         color: 'text.primary',
@@ -76,7 +73,7 @@ const Content = () => {
                 </Button>
             </Stack>
         </Stack>
-    );
-};
+    )
+}
 
-export default Content;
+export default Content
