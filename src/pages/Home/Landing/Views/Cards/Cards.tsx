@@ -5,10 +5,10 @@ import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek'
 import EventIcon from '@mui/icons-material/Event'
 import ViewCard from './ViewCard/ViewCard.tsx'
 
-const cards: ViewCardProps[] = [
-    { icon: CalendarViewMonthIcon, title: 'Monthly View' },
-    { icon: CalendarViewWeekIcon, title: 'Weekly View' },
-    { icon: EventIcon, title: 'Day View' },
+const CARDS_CONTENT: ViewCardProps[] = [
+    { Icon: CalendarViewMonthIcon, title: 'Monthly View' },
+    { Icon: CalendarViewWeekIcon, title: 'Weekly View' },
+    { Icon: EventIcon, title: 'Day View' },
 ]
 
 const Cards = () => {
@@ -21,10 +21,10 @@ const Cards = () => {
                 pt: 4,
             }}
         >
-            {cards.map((card) => (
+            {CARDS_CONTENT.map((card) => (
                 <ViewCard
                     key={card.title}
-                    icon={card.icon}
+                    Icon={card.Icon}
                     title={card.title}
                 />
             ))}

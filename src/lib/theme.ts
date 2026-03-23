@@ -58,7 +58,7 @@ const theme = createTheme({
             lineHeight: 1.2,
         },
         h2: {
-            fontSize: '2rem',
+            fontSize: '2.25rem',
             fontWeight: 600,
             lineHeight: 1.2,
         },

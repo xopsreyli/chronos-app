@@ -2,13 +2,11 @@ import { alpha, Box, Card, Typography } from '@mui/material'
 import type { ComponentType } from 'react'
 
 export type ViewCardProps = {
-    icon: ComponentType<{ sx?: object }>
+    Icon: ComponentType<{ sx?: object }>
     title: string
 }
 
-const ViewCard = ({ icon, title }: ViewCardProps) => {
-    const Icon = icon
-
+const ViewCard = ({ Icon, title }: ViewCardProps) => {
     return (
         <Card
             elevation={0}
