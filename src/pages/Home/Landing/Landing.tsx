@@ -7,7 +7,7 @@ import Footer from './Footer/Footer.tsx'
 const Landing = () => {
     return (
         <>
-            <Container maxWidth="lg">
+            <Container component="main" maxWidth="lg">
                 <Intro />
                 <Features />
                 <Views />
