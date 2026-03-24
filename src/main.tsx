@@ -5,12 +5,12 @@ import '@fontsource/roboto/400.css'
 import '@fontsource/roboto/500.css'
 import '@fontsource/roboto/700.css'
 import { BrowserRouter } from 'react-router'
-import AppRoutes from './AppRoutes.tsx'
+import App from './App.tsx'
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <BrowserRouter>
-            <AppRoutes />
+            <App />
         </BrowserRouter>
     </StrictMode>,
 )

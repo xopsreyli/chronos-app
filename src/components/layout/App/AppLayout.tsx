@@ -3,7 +3,7 @@ import { CssBaseline, ThemeProvider, Box } from '@mui/material'
 import theme from '../../../lib/theme/theme.ts'
 import { Outlet } from 'react-router'
 
-const App = () => {
+const AppLayout = () => {
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
@@ -15,4 +15,4 @@ const App = () => {
     )
 }
 
-export default App
+export default AppLayout
