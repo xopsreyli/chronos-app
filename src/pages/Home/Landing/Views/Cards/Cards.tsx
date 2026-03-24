@@ -13,14 +13,7 @@ const CARDS_CONTENT: ViewCardProps[] = [
 
 const Cards = () => {
     return (
-        <Stack
-            direction="row"
-            spacing={3}
-            useFlexGap
-            sx={{
-                pt: 4,
-            }}
-        >
+        <Stack direction="row" spacing={3} useFlexGap>
             {CARDS_CONTENT.map((card) => (
                 <ViewCard
                     key={card.title}

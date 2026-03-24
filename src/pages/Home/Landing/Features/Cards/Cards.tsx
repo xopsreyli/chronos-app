@@ -65,11 +65,11 @@ const Cards = () => {
             sx={{
                 justifyContent: 'center',
                 flexWrap: 'wrap',
-                pt: 4,
             }}
         >
             {CARDS_CONTENT.map((card) => (
                 <FeatureCard
+                    key={card.label}
                     color={card.color}
                     Icon={card.Icon}
                     label={card.label}

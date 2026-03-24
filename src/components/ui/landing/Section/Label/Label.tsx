@@ -4,7 +4,7 @@ type Props = {
     label: string
 }
 
-const SectionLabel = ({ label }: Props) => {
+const Label = ({ label }: Props) => {
     return (
         <Chip
             label={label}
@@ -18,4 +18,4 @@ const SectionLabel = ({ label }: Props) => {
     )
 }
 
-export default SectionLabel
+export default Label

@@ -1,40 +1,16 @@
-import { Stack, Typography } from '@mui/material'
-import SectionLabel from '../../../../components/ui/landing/SectionLabel/SectionLabel.tsx'
 import Cards from './Cards/Cards.tsx'
+import Section from '../../../../components/ui/landing/Section/Section.tsx'
 
 const Features = () => {
     return (
-        <Stack
+        <Section
             id="features"
-            spacing={2}
-            useFlexGap
-            component="section"
-            sx={{
-                alignItems: 'center',
-                my: 10,
-            }}
+            label="features"
+            title="Everything You Need"
+            subtitle="Powerful features to help you manage your time effectively and stay on top of your commitments."
         >
-            <SectionLabel label="Features" />
-            <Typography
-                variant="h3"
-                sx={{
-                    textTransform: 'capitalize',
-                }}
-            >
-                Everything You Need
-            </Typography>
-            <Typography
-                align="center"
-                color="text.secondary"
-                sx={{
-                    maxWidth: '500px',
-                }}
-            >
-                Powerful features to help you manage your time effectively and
-                stay on top of your commitments.
-            </Typography>
             <Cards />
-        </Stack>
+        </Section>
     )
 }
 
