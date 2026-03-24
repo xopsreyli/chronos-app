@@ -87,6 +87,13 @@ const theme = createTheme({
         borderRadius: 12,
     },
     components: {
+        MuiCssBaseline: {
+            styleOverrides: {
+                html: {
+                    scrollBehavior: 'smooth',
+                },
+            },
+        },
         MuiButton: {
             styleOverrides: {
                 root: {

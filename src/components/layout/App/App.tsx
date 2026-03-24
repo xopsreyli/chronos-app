@@ -1,6 +1,6 @@
 import Header from '../Header/Header.tsx'
 import { CssBaseline, ThemeProvider, Box } from '@mui/material'
-import theme from '../../../lib/theme.ts'
+import theme from '../../../lib/theme/theme.ts'
 import { Outlet } from 'react-router'
 
 const App = () => {

@@ -5,6 +5,7 @@ import Cards from './Cards/Cards.tsx'
 const Views = () => {
     return (
         <Stack
+            id="views"
             spacing={2}
             useFlexGap
             component="section"
