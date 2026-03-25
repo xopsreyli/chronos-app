@@ -1,35 +1,23 @@
-import { Box, Stack, Typography } from '@mui/material'
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import { Box, Typography } from '@mui/material'
+import Logo from "../../../../../../components/ui/common/Logo/Logo.tsx";
 
 const About = () => {
     return (
         <Box>
-            <Stack
-                direction="row"
-                spacing={1}
-                useFlexGap
+            <Box
                 sx={{
-                    alignItems: 'center',
                     mb: 2,
                 }}
             >
-                <CalendarMonthIcon
-                    sx={{
+                <Logo
+                    icon={{
                         color: 'primary.light',
-                        fontSize: 28,
+                        size: 28,
                     }}
+                    nameSize={16}
+                    themeMode="dark"
                 />
-                <Typography
-                    component="h6"
-                    sx={{
-                        textTransform: 'capitalize',
-                        color: '#fff',
-                        fontWeight: 'bold',
-                    }}
-                >
-                    chronos
-                </Typography>
-            </Stack>
+            </Box>
             <Typography
                 variant="body2"
                 color="grey.400"

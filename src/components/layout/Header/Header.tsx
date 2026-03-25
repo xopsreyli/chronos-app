@@ -1,5 +1,5 @@
 import { AppBar, Container, Toolbar } from '@mui/material'
-import Logo from './Logo/Logo.tsx'
+import Logo from '../../ui/common/Logo/Logo.tsx'
 import AuthButtons from './AuthButtons/AuthButtons.tsx'
 
 const Header = () => {

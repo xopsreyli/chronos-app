@@ -2,7 +2,27 @@ import { Link, Stack, Typography } from '@mui/material'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { Link as RRLink } from 'react-router'
 
-const Logo = () => {
+type IconProps = {
+    color?: string,
+    size?: number
+}
+
+type Props = {
+    icon?: IconProps,
+    nameSize?: number
+    themeMode?: 'light' | 'dark'
+}
+
+const Logo = ({
+    icon = {
+        color: 'primary.main',
+        size: 32,
+    },
+    nameSize = 18,
+    themeMode = 'light',
+              }: Props) => {
+    const isDark: boolean = themeMode === 'dark'
+
     return (
         <Link to={'/'} component={RRLink} underline="none">
             <Stack
@@ -15,14 +35,14 @@ const Logo = () => {
             >
                 <CalendarMonthIcon
                     sx={{
-                        color: 'primary.main',
-                        fontSize: 32,
+                        color: icon.color,
+                        fontSize: icon.size,
                     }}
                 />
                 <Typography
                     sx={{
-                        color: 'text.primary',
-                        fontSize: '1.125rem',
+                        color: isDark ? '#fff' : 'text.primary',
+                        fontSize: nameSize,
                         fontWeight: 'bold',
                         textTransform: 'capitalize',
                     }}

@@ -1,18 +1,24 @@
-import { Box } from '@mui/material'
+import { Stack } from '@mui/material'
 import { Outlet } from 'react-router'
+import Logo from "../../ui/common/Logo/Logo.tsx";
 
 const AuthLayout = () => {
     return (
-        <Box
+        <Stack
             sx={{
                 minHeight: '100vh',
-                display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
             }}
         >
+            <Logo
+                icon={{
+                    size: 40
+                }}
+                nameSize={20}
+            />
             <Outlet />
-        </Box>
+        </Stack>
     )
 }
 
