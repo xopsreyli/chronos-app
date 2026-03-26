@@ -3,12 +3,12 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
 import { Link as RRLink } from 'react-router'
 
 type IconProps = {
-    color?: string,
+    color?: string
     size?: number
 }
 
 type Props = {
-    icon?: IconProps,
+    icon?: IconProps
     nameSize?: number
     themeMode?: 'light' | 'dark'
 }
@@ -20,7 +20,7 @@ const Logo = ({
     },
     nameSize = 18,
     themeMode = 'light',
-              }: Props) => {
+}: Props) => {
     const isDark: boolean = themeMode === 'dark'
 
     return (

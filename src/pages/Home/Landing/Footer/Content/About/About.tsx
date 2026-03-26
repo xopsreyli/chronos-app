@@ -1,5 +1,5 @@
 import { Box, Typography } from '@mui/material'
-import Logo from "../../../../../../components/ui/common/Logo/Logo.tsx";
+import Logo from '../../../../../../components/ui/common/Logo/Logo.tsx'
 
 const About = () => {
     return (

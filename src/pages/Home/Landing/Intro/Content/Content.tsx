@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from '@mui/material'
 import { Link as RRLink } from 'react-router'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
+import OutlinedButtonLink from '../../../../../components/ui/common/OutlinedButtonLink/OutlinedButtonLink.tsx'
 
 const Content = () => {
     return (
@@ -51,26 +52,7 @@ const Content = () => {
                 >
                     start free today
                 </Button>
-                <Button
-                    to="/signin"
-                    component={RRLink}
-                    variant="outlined"
-                    size="large"
-                    sx={{
-                        borderColor: 'grey.300',
-                        color: 'text.primary',
-                        textTransform: 'capitalize',
-                        fontSize: '1rem',
-                        py: 1.5,
-                        px: 4,
-                        '&:hover': {
-                            borderColor: 'grey.400',
-                            backgroundColor: 'grey.50',
-                        },
-                    }}
-                >
-                    sign in
-                </Button>
+                <OutlinedButtonLink href="/signin" text="Sign In" />
             </Stack>
         </Stack>
     )
