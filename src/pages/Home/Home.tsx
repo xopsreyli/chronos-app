@@ -1,7 +1,8 @@
-import Landing from './Landing/Landing.tsx'
+// import Landing from './Landing/Landing.tsx'
+import App from './App/App.tsx'
 
 const Home = () => {
-    return <Landing />
+    return <App />
 }
 
 export default Home

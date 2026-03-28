@@ -4,7 +4,7 @@ import Logo from '../../ui/common/Logo/Logo.tsx'
 
 const AuthLayout = () => {
     return (
-        <Container maxWidth="sm">
+        <Container component="main" maxWidth="sm">
             <Stack
                 sx={{
                     minHeight: '100vh',
