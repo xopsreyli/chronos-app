@@ -1,6 +1,7 @@
 import { AppBar, Container, Toolbar } from '@mui/material'
 import Logo from '../../ui/common/Logo/Logo.tsx'
-import AuthButtons from './AuthButtons/AuthButtons.tsx'
+// import AuthButtons from './AuthButtons/AuthButtons.tsx'
+import UserMenu from './UserMenu/UserMenu.tsx'
 
 const Header = () => {
     return (
@@ -11,7 +12,8 @@ const Header = () => {
                     sx={{ justifyContent: 'space-between' }}
                 >
                     <Logo />
-                    <AuthButtons />
+                    {/*<AuthButtons />*/}
+                    <UserMenu />
                 </Toolbar>
             </Container>
         </AppBar>
