@@ -1,8 +1,9 @@
-import { alpha, Box, Card, Typography } from '@mui/material'
-import type { ComponentType } from 'react'
+import { Card, Typography } from '@mui/material'
+import RoundIcon from '../../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
+import type { SvgIconComponent } from '@mui/icons-material'
 
 export type ViewCardProps = {
-    Icon: ComponentType<{ sx?: object }>
+    Icon: SvgIconComponent
     title: string
 }
 
@@ -26,24 +27,7 @@ const ViewCard = ({ Icon, title }: ViewCardProps) => {
                 },
             }}
         >
-            <Box
-                sx={(theme) => ({
-                    width: 64,
-                    aspectRatio: 1,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    backgroundColor: `${alpha(theme.palette.secondary.main, 0.1)}`,
-                    borderRadius: '50%',
-                })}
-            >
-                <Icon
-                    sx={{
-                        color: 'primary.main',
-                        fontSize: 32,
-                    }}
-                />
-            </Box>
+            <RoundIcon Icon={Icon} color="#7FFFD4" iconSize={32} />
             <Typography
                 sx={{
                     fontWeight: 600,

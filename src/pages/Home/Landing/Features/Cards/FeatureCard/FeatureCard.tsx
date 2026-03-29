@@ -1,9 +1,10 @@
 import { alpha, Box, Card, Chip, Stack, Typography } from '@mui/material'
-import type { ComponentType } from 'react'
+import RoundIcon from '../../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
+import type { SvgIconComponent } from '@mui/icons-material'
 
 export type FeatureCardProps = {
     color: string
-    Icon: ComponentType<{ sx?: object }>
+    Icon: SvgIconComponent
     label: string
     title: string
     description: string
@@ -38,19 +39,7 @@ const FeatureCard = ({
                     mb: 2,
                 }}
             >
-                <Box
-                    sx={{
-                        width: 48,
-                        aspectRatio: 1,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        borderRadius: '50%',
-                        backgroundColor: `${alpha(color, 0.1)}`,
-                    }}
-                >
-                    <Icon sx={{ color }} />
-                </Box>
+                <RoundIcon Icon={Icon} color={color} iconSize={24} />
                 <Chip
                     label={label}
                     size="small"

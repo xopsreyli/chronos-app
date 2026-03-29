@@ -1,14 +1,8 @@
-import {
-    alpha,
-    Box,
-    CardHeader,
-    IconButton,
-    Menu,
-    MenuItem,
-} from '@mui/material'
+import { CardHeader, IconButton, Menu, MenuItem } from '@mui/material'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { type MouseEvent, useState } from 'react'
+import RoundIcon from '../../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
 
 const Header = () => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -28,19 +22,11 @@ const Header = () => {
         <>
             <CardHeader
                 avatar={
-                    <Box
-                        sx={{
-                            width: 48,
-                            aspectRatio: 1,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            borderRadius: '50%',
-                            backgroundColor: `${alpha('#7FFFD4', 0.1)}`,
-                        }}
-                    >
-                        <CalendarTodayIcon color="primary" />
-                    </Box>
+                    <RoundIcon
+                        Icon={CalendarTodayIcon}
+                        color="#7FFFD4"
+                        iconSize={24}
+                    />
                 }
                 action={
                     <IconButton

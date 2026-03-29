@@ -1,5 +1,6 @@
-import { alpha, Box, ButtonBase, Stack, Typography } from '@mui/material'
+import { alpha, ButtonBase, Stack, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
+import RoundIcon from '../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
 
 const CreateNewButton = () => {
     return (
@@ -12,10 +13,6 @@ const CreateNewButton = () => {
                 '&:hover': {
                     borderColor: 'primary.main',
                     backgroundColor: `${alpha('#7FFF94', 0.1)}`,
-                    '& .icon-box': {
-                        backgroundColor: `${alpha('#7FFFD4', 0.2)}`,
-                        color: 'primary.main',
-                    },
                 },
             }}
         >
@@ -27,23 +24,7 @@ const CreateNewButton = () => {
                     alignItems: 'center',
                 }}
             >
-                <Box
-                    className="icon-box"
-                    sx={{
-                        width: 56,
-                        aspectRatio: 1,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: 'grey.200',
-                        borderRadius: '50%',
-                        color: 'grey.600',
-                        fontSize: 28,
-                        transition: 'all 0.2s linear',
-                    }}
-                >
-                    <AddIcon fontSize="inherit" />
-                </Box>
+                <RoundIcon Icon={AddIcon} color={'#64748b'} iconSize={28} />
                 <Typography
                     variant="body1"
                     color="text.secondary"
