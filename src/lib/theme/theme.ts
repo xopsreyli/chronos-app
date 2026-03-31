@@ -100,6 +100,11 @@ const theme = createTheme({
                     borderRadius: 8,
                     padding: '10px 24px',
                 },
+                text: {
+                    '&:hover': {
+                        backgroundColor: 'rgba(127, 255, 148, 0.1)',
+                    },
+                },
                 contained: {
                     boxShadow: 'none',
                     '&:hover': {
