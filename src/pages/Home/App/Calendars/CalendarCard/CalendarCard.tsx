@@ -20,7 +20,7 @@ const CalendarCard = ({ id, name, description }: CalendarProps) => {
                 },
             }}
         >
-            <CardActionArea to={`/calendar/${id}`} component={Link}>
+            <CardActionArea to={`/calendars/${id}`} component={Link}>
                 <Box
                     sx={{
                         height: 8,

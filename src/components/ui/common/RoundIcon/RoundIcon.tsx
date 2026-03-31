@@ -15,6 +15,7 @@ const RoundIcon = ({ Icon, color, iconSize }: Props) => {
             sx={{
                 width: boxSize,
                 aspectRatio: 1,
+                flexShrink: 0,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
