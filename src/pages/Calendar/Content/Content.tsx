@@ -1,5 +1,6 @@
 import { Box, Toolbar } from '@mui/material'
 import Header from './Header/Header.tsx'
+import Panel from './Panel/Panel.tsx'
 
 const Content = () => {
     return (
@@ -16,6 +17,7 @@ const Content = () => {
                 }}
             >
                 <Header />
+                <Panel />
             </Box>
         </Box>
     )

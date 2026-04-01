@@ -56,31 +56,37 @@ const theme = createTheme({
             fontSize: '3.5rem',
             fontWeight: 700,
             lineHeight: 1.2,
+            letterSpacing: '0.05em',
         },
         h2: {
             fontSize: '2.25rem',
             fontWeight: 600,
             lineHeight: 1.2,
+            letterSpacing: '0.05em',
         },
         h3: {
             fontSize: '1.5rem',
             fontWeight: 600,
             lineHeight: 1.4,
+            letterSpacing: '0.05em',
         },
         h4: {
             fontSize: '1.25rem',
             fontWeight: 600,
             lineHeight: 1.5,
+            letterSpacing: '0.05em',
         },
         h5: {
             fontSize: '1.125rem',
             fontWeight: 600,
             lineHeight: 1.5,
+            letterSpacing: '0.05em',
         },
         h6: {
             fontSize: '0.875rem',
             fontWeight: 600,
             lineHeight: 1.5,
+            letterSpacing: '0.05em',
         },
     },
     shape: {
