@@ -1,7 +1,8 @@
 import { Paper } from '@mui/material'
 import Header from './Header/Header.tsx'
 // import UpcomingView from './Views/UpcomingView/UpcomingView.tsx'
-import YearView from './Views/YearView/YearView.tsx'
+import WeekView from './Views/WeekView/WeekView.tsx'
+// import YearView from './Views/YearView/YearView.tsx'
 
 const Panel = () => {
     return (
@@ -16,7 +17,7 @@ const Panel = () => {
             }}
         >
             <Header />
-            <YearView />
+            <WeekView />
         </Paper>
     )
 }
