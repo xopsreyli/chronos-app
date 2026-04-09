@@ -10,8 +10,12 @@ import {
     Typography,
 } from '@mui/material'
 import { useState, type MouseEvent } from 'react'
+import useUser from '../../../../hooks/useUser/useUser.ts'
+import useLogout from '../../../../hooks/useLogout/useLogout.ts'
 
 const UserMenu = () => {
+    const { data: user } = useUser()
+    const { mutate } = useLogout()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -22,6 +26,11 @@ const UserMenu = () => {
     }
 
     const open = Boolean(anchorEl)
+
+    const handleLogout = () => {
+        mutate()
+        handleClose()
+    }
 
     return (
         <>
@@ -41,7 +50,7 @@ const UserMenu = () => {
                         fontWeight: 700,
                     }}
                 >
-                    x
+                    {user.nickname[0]}
                 </Avatar>
             </IconButton>
             <Menu
@@ -67,7 +76,7 @@ const UserMenu = () => {
                         px: 2,
                     }}
                 >
-                    xopsreyli
+                    {user.nickname}
                 </Typography>
                 <MenuItem onClick={handleClose}>
                     <ListItemIcon>
@@ -88,7 +97,7 @@ const UserMenu = () => {
                     Settings
                 </MenuItem>
                 <MenuItem
-                    onClick={handleClose}
+                    onClick={handleLogout}
                     sx={{
                         color: 'error.main',
                     }}

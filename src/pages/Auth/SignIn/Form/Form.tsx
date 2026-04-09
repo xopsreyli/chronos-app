@@ -1,9 +1,36 @@
 import { Box, Button, Stack, TextField } from '@mui/material'
 import CustomLink from '../../../../components/ui/auth/CustomLink/CustomLink.tsx'
+import { z } from 'zod'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import signIn from '../../../../api/auth/signIn/signIn.ts'
+import ErrorMessage from '../../../../components/ui/common/Form/ErrorMessage/ErrorMessage.tsx'
+import useSign from '../../../../hooks/useSign/useSign.ts'
+import { emailField, passwordField } from '../../../../schemas/auth/auth.ts'
+
+const schema = z.object({
+    email: emailField,
+    password: passwordField,
+})
+
+type SignInData = z.infer<typeof schema>
 
 const Form = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SignInData>({
+        resolver: zodResolver(schema),
+    })
+    const { mutate, isPending, isError, error } = useSign(signIn)
+
+    const onSubmit = (data: SignInData) => {
+        mutate(data)
+    }
+
     return (
-        <Box component="form">
+        <Box component="form" onSubmit={handleSubmit(onSubmit)}>
             <Stack
                 spacing={2.5}
                 useFlexGap
@@ -13,18 +40,20 @@ const Form = () => {
             >
                 <TextField
                     type="email"
-                    label="Email Address"
+                    label="Email Address *"
                     fullWidth
-                    name="email"
-                    required
+                    helperText={errors.email?.message}
+                    error={!!errors.email}
+                    {...register('email')}
                 />
                 <Box>
                     <TextField
                         type="password"
-                        label="Password"
+                        label="Password *"
                         fullWidth
-                        name="password"
-                        required
+                        helperText={errors.password?.message}
+                        error={!!errors.password}
+                        {...register('password')}
                     />
                     <Box
                         sx={{
@@ -36,10 +65,12 @@ const Form = () => {
                     </Box>
                 </Box>
             </Stack>
+            {isError && <ErrorMessage message={error.message} />}
             <Button
                 type="submit"
                 variant="contained"
                 fullWidth
+                loading={isPending}
                 sx={{
                     textTransform: 'capitalize',
                     fontSize: 15,

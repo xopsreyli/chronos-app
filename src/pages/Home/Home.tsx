@@ -1,8 +1,11 @@
-// import Landing from './Landing/Landing.tsx'
+import useUser from '../../hooks/useUser/useUser.ts'
+import Landing from './Landing/Landing.tsx'
 import App from './App/App.tsx'
 
 const Home = () => {
-    return <App />
+    const { data: user } = useUser()
+
+    return user ? <App /> : <Landing />
 }
 
 export default Home
