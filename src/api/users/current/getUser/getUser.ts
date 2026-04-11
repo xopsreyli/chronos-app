@@ -4,17 +4,17 @@ const getUser = async () => {
         credentials: 'include',
     })
 
-    const data = await response.json()
+    const json = await response.json()
 
     if (!response.ok) {
         if (response.status === 401) {
             return null
         }
 
-        throw data
+        throw json
     }
 
-    return data
+    return json
 }
 
 export default getUser

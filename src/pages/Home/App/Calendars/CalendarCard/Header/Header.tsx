@@ -3,9 +3,19 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import MoreVertIcon from '@mui/icons-material/MoreVert'
 import { type MouseEvent, useState } from 'react'
 import RoundIcon from '../../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
+import useDeleteCalendar from '../../../../../../hooks/useDeleteCalendar/useDeleteCalendar.ts'
+import useDialogStore from '../../../../../../stores/useDialogStore/useDIalogStore.ts'
+import CalendarForm from '../../../../../../components/ui/app/CalendarForm/CalendarForm.tsx'
+import type { Calendar } from '../../../../../../types/calendar/types.ts'
 
-const Header = () => {
+type Props = {
+    calendar: Calendar
+}
+
+const Header = ({ calendar }: Props) => {
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+    const { mutate } = useDeleteCalendar()
+    const openDialog = useDialogStore((state) => state.open)
 
     const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
         event.preventDefault()
@@ -18,13 +28,23 @@ const Header = () => {
 
     const open = Boolean(anchorEl)
 
+    const handleEdit = (event: MouseEvent<HTMLLIElement>) => {
+        handleClose(event)
+        openDialog(<CalendarForm calendar={calendar} />)
+    }
+
+    const handleDelete = (event: MouseEvent<HTMLLIElement>) => {
+        handleClose(event)
+        mutate(calendar.id)
+    }
+
     return (
         <>
             <CardHeader
                 avatar={
                     <RoundIcon
                         Icon={CalendarTodayIcon}
-                        color="#7FFFD4"
+                        color={calendar.color}
                         iconSize={24}
                     />
                 }
@@ -50,9 +70,9 @@ const Header = () => {
                 open={open}
                 onClose={handleClose}
             >
-                <MenuItem onClick={handleClose}>Edit</MenuItem>
+                <MenuItem onClick={handleEdit}>Edit</MenuItem>
                 <MenuItem
-                    onClick={handleClose}
+                    onClick={handleDelete}
                     sx={{
                         color: 'error.main',
                     }}

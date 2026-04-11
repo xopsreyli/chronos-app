@@ -28,9 +28,11 @@ const UserMenu = () => {
     const open = Boolean(anchorEl)
 
     const handleLogout = () => {
-        mutate()
         handleClose()
+        mutate()
     }
+
+    if (!user) return null
 
     return (
         <>

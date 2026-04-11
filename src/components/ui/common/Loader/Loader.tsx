@@ -1,10 +1,14 @@
 import { Box, CircularProgress } from '@mui/material'
 
-const PageLoader = () => {
+type Props = {
+    isFullScreen?: boolean
+}
+
+const Loader = ({ isFullScreen = false }: Props) => {
     return (
         <Box
             sx={{
-                height: '100vh',
+                height: isFullScreen ? '100vh' : 'auto',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -15,4 +19,4 @@ const PageLoader = () => {
     )
 }
 
-export default PageLoader
+export default Loader

@@ -1,10 +1,19 @@
 import { alpha, ButtonBase, Stack, Typography } from '@mui/material'
 import AddIcon from '@mui/icons-material/Add'
 import RoundIcon from '../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
+import useDialogStore from '../../../../../stores/useDialogStore/useDIalogStore.ts'
+import CalendarForm from '../../../../../components/ui/app/CalendarForm/CalendarForm.tsx'
 
 const CreateNewButton = () => {
+    const open = useDialogStore((state) => state.open)
+
+    const handleOnClick = () => {
+        open(<CalendarForm />)
+    }
+
     return (
         <ButtonBase
+            onClick={handleOnClick}
             sx={{
                 border: '2px dashed',
                 borderColor: 'grey.300',

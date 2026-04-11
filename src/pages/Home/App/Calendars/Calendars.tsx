@@ -1,29 +1,20 @@
 import { Stack } from '@mui/material'
 import CalendarCard from './CalendarCard/CalendarCard.tsx'
 import CreateNewButton from './CreateNewButton/CreateNewButton.tsx'
-
-const CALENDARS = [
-    {
-        id: 1,
-        name: 'Personal',
-        description: 'My personal calendar for daily activities',
-    },
-    {
-        id: 2,
-        name: 'Work',
-        description: 'Professional meetings and deadlines',
-    },
-    {
-        id: 3,
-        name: 'Fitness',
-        description: 'Workout schedule and health appointments',
-    },
-]
+import useCalendars from '../../../../hooks/useCalendars/useCalendars.ts'
+import Loader from '../../../../components/ui/common/Loader/Loader.tsx'
+import type { Types } from '../../../../types/calendar/types.ts'
 
 const Calendars = () => {
+    const { data: calendars, isPending } = useCalendars()
+
+    if (isPending) {
+        return <Loader />
+    }
+
     return (
         <Stack direction="row">
-            {CALENDARS.map((calendar) => (
+            {calendars.map((calendar: Types) => (
                 <CalendarCard key={calendar.id} {...calendar} />
             ))}
             <CreateNewButton />

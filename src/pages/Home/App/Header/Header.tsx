@@ -1,5 +1,5 @@
-import { Box, Button, Stack, Typography } from '@mui/material'
-import AddIcon from '@mui/icons-material/Add'
+import { Box, Stack, Typography } from '@mui/material'
+import NewCalendarButton from './NewCalendarButton/NewCalendarButton.tsx'
 
 const Header = () => {
     return (
@@ -25,15 +25,7 @@ const Header = () => {
                     Manage and view all your calendars in one place
                 </Typography>
             </Box>
-            <Button
-                variant="contained"
-                startIcon={<AddIcon />}
-                sx={{
-                    textTransform: 'capitalize',
-                }}
-            >
-                new calendar
-            </Button>
+            <NewCalendarButton />
         </Stack>
     )
 }

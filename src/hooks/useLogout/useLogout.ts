@@ -10,6 +10,7 @@ const useLogout = () => {
         mutationFn: logout,
         onSuccess: () => {
             queryClient.setQueryData(['user'], null)
+            queryClient.clear()
             navigate('/')
         },
     })

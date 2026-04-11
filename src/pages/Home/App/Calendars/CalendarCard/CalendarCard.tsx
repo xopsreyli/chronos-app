@@ -2,14 +2,11 @@ import { Box, Card, CardActionArea } from '@mui/material'
 import Header from './Header/Header.tsx'
 import Content from './Content/Content.tsx'
 import { Link } from 'react-router'
+import type { Calendar } from '../../../../../types/calendar/types.ts'
 
-type CalendarProps = {
-    id: number
-    name: string
-    description: string
-}
+const CalendarCard = (calendar: Calendar) => {
+    const { id, name, description, color } = calendar
 
-const CalendarCard = ({ id, name, description }: CalendarProps) => {
     return (
         <Card
             sx={{
@@ -24,11 +21,11 @@ const CalendarCard = ({ id, name, description }: CalendarProps) => {
                 <Box
                     sx={{
                         height: 8,
-                        backgroundColor: 'primary.main',
+                        backgroundColor: color,
                     }}
                 ></Box>
                 <Box sx={{ p: 3 }}>
-                    <Header />
+                    <Header calendar={calendar} />
                     <Content name={name} description={description} />
                 </Box>
             </CardActionArea>
