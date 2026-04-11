@@ -2,11 +2,12 @@ import { Typography } from '@mui/material'
 
 type Props = {
     message: string
+    sx?: object
 }
 
-const ErrorMessage = ({ message }: Props) => {
+const ErrorMessage = ({ message, sx }: Props) => {
     return (
-        <Typography variant={'body2'} color={'error.main'}>
+        <Typography variant={'body2'} color={'error.main'} sx={sx}>
             {message}
         </Typography>
     )

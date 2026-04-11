@@ -33,7 +33,7 @@ const Form = () => {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { isValid, errors },
     } = useForm<SignUpFormData>({
         resolver: zodResolver(schema),
     })
@@ -88,11 +88,12 @@ const Form = () => {
                     {...register('confirmPassword')}
                 />
             </Stack>
-            {isError && <ErrorMessage message={error.message} />}
+            {isError && <ErrorMessage message={error.message} sx={{ mb: 3 }} />}
             <Button
                 type="submit"
                 variant="contained"
                 fullWidth
+                disabled={!isValid}
                 loading={isPending}
                 sx={{
                     textTransform: 'capitalize',
