@@ -2,8 +2,10 @@ import type { Calendar } from '../../../types/calendar/types.ts'
 
 type CalendarUpdateData = Pick<Calendar, 'id'> & Partial<Omit<Calendar, 'id'>>
 
-const updateCalendar = async (calendar: CalendarUpdateData) => {
-    const { id, ...data } = calendar
+const updateCalendar = async (
+    calendarUpdateData: CalendarUpdateData,
+): Promise<Calendar> => {
+    const { id, ...data } = calendarUpdateData
     const response = await fetch(
         import.meta.env.VITE_APP_API + `/calendars/${id}`,
         {

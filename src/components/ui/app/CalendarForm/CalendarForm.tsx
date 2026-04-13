@@ -9,21 +9,16 @@ import {
     TextField,
 } from '@mui/material'
 import useDialogStore from '../../../../stores/useDialogStore/useDIalogStore.ts'
-import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import useCreateCalendar from '../../../../hooks/useCreateCalendar/useCreateCalendar.ts'
 import ErrorMessage from '../../common/Form/ErrorMessage/ErrorMessage.tsx'
-import type { Calendar } from '../../../../types/calendar/types.ts'
+import type {
+    Calendar,
+    CalendarFormData,
+} from '../../../../types/calendar/types.ts'
 import useUpdateCalendar from '../../../../hooks/useUpdateCalendar/useUpdateCalendar.ts'
-
-const schema = z.object({
-    name: z.string().min(1, { error: 'Name is required' }).max(24),
-    description: z.string(),
-    color: z.string(),
-})
-
-type CalendarFormData = z.infer<typeof schema>
+import { calendarSchema } from '../../../../schemas/calendar/schemas.ts'
 
 type Props = {
     calendar?: Calendar
@@ -42,13 +37,13 @@ const CalendarForm = ({ calendar }: Props) => {
                   color: calendar.color,
               }
             : undefined,
-        resolver: zodResolver(schema),
+        resolver: zodResolver(calendarSchema),
     })
     const createMutation = useCreateCalendar()
     const updateMutation = useUpdateCalendar()
     const { isPending, isError, error } = calendar
-        ? createMutation
-        : updateMutation
+        ? updateMutation
+        : createMutation
     const close = useDialogStore((state) => state.close)
 
     const onSubmit = (data: CalendarFormData) => {

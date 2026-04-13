@@ -1,4 +1,4 @@
-const deleteCalendar = async (id: number) => {
+const deleteCalendar = async (id: number): Promise<number> => {
     const response = await fetch(
         import.meta.env.VITE_APP_API + `/calendars/${id}`,
         {

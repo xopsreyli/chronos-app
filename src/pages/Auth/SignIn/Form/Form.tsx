@@ -1,19 +1,12 @@
 import { Box, Button, Stack, TextField } from '@mui/material'
 import CustomLink from '../../../../components/ui/auth/CustomLink/CustomLink.tsx'
-import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import signIn from '../../../../api/auth/signIn/signIn.ts'
 import ErrorMessage from '../../../../components/ui/common/Form/ErrorMessage/ErrorMessage.tsx'
 import useSign from '../../../../hooks/useSign/useSign.ts'
-import { emailField, passwordField } from '../../../../schemas/auth/auth.ts'
-
-const schema = z.object({
-    email: emailField,
-    password: passwordField,
-})
-
-type SignInData = z.infer<typeof schema>
+import { signInSchema } from '../../../../schemas/auth/schemas.ts'
+import type { SignInData } from '../../../../types/auth/types.ts'
 
 const Form = () => {
     const {
@@ -21,7 +14,7 @@ const Form = () => {
         handleSubmit,
         formState: { isValid, errors },
     } = useForm<SignInData>({
-        resolver: zodResolver(schema),
+        resolver: zodResolver(signInSchema),
     })
     const { mutate, isPending, isError, error } = useSign(signIn)
 

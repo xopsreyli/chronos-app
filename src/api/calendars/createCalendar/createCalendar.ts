@@ -2,7 +2,9 @@ import type { Calendar } from '../../../types/calendar/types.ts'
 
 type CalendarCreationData = Omit<Calendar, 'id'>
 
-const createCalendar = async (data: CalendarCreationData) => {
+const createCalendar = async (
+    data: CalendarCreationData,
+): Promise<Calendar> => {
     const response = await fetch(import.meta.env.VITE_APP_API + '/calendars', {
         method: 'POST',
         body: JSON.stringify({ ...data }),

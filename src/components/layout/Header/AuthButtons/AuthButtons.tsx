@@ -1,12 +1,12 @@
 import { Button, Stack } from '@mui/material'
-import { Link as RRLink } from 'react-router'
+import { Link } from 'react-router'
 
 const AuthButtons = () => {
     return (
         <Stack direction="row" spacing={2} useFlexGap>
             <Button
                 to="/signin"
-                component={RRLink}
+                component={Link}
                 sx={{
                     color: 'text.secondary',
                     textTransform: 'capitalize',
@@ -16,7 +16,7 @@ const AuthButtons = () => {
             </Button>
             <Button
                 to="/signup"
-                component={RRLink}
+                component={Link}
                 variant="contained"
                 color="primary"
                 sx={{
