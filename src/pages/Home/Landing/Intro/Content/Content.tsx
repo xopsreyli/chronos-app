@@ -1,5 +1,5 @@
 import { Box, Button, Stack, Typography } from '@mui/material'
-import { Link as RRLink } from 'react-router'
+import { Link } from 'react-router'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import OutlinedButtonLink from '../../../../../components/ui/common/OutlinedButtonLink/OutlinedButtonLink.tsx'
 
@@ -38,7 +38,7 @@ const Content = () => {
             >
                 <Button
                     to="/signup"
-                    component={RRLink}
+                    component={Link}
                     variant="contained"
                     color="primary"
                     size="large"

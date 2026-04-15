@@ -17,6 +17,10 @@ const useUpdateCalendar = () => {
                         : calendar,
                 ),
             )
+            queryClient.setQueryData<Calendar>(
+                ['calendar', updatedCalendar.id],
+                updatedCalendar,
+            )
             close()
         },
     })

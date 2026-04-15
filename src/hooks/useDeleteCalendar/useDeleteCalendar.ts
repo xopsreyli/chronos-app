@@ -11,6 +11,7 @@ const useDeleteCalendar = () => {
             queryClient.setQueryData<Calendar[]>(['calendars'], (calendars) =>
                 calendars!.filter((calendar) => calendar.id !== id),
             )
+            queryClient.removeQueries({ queryKey: ['calendar', id] })
         },
     })
 }

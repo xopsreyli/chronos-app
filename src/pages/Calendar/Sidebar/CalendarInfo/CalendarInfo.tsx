@@ -1,8 +1,15 @@
 import { Box, Stack, Typography } from '@mui/material'
 import RoundIcon from '../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
 import EventIcon from '@mui/icons-material/Event'
+import useCalendar from '../../../../hooks/useCalendar/useCalendar.ts'
+import { useParams } from 'react-router'
 
 const CalendarInfo = () => {
+    const { id } = useParams()
+    const { data: calendar } = useCalendar(Number(id))
+
+    if (!calendar) return null
+
     return (
         <Stack
             component="section"
@@ -13,7 +20,7 @@ const CalendarInfo = () => {
                 alignItems: 'center',
             }}
         >
-            <RoundIcon Icon={EventIcon} iconSize={24} color="#7FFFD4" />
+            <RoundIcon Icon={EventIcon} iconSize={24} color={calendar.color} />
             <Box>
                 <Typography
                     variant="h6"
@@ -21,10 +28,10 @@ const CalendarInfo = () => {
                         textTransform: 'capitalize',
                     }}
                 >
-                    Fitness
+                    {calendar.name}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                    Workout schedule and health appointments
+                    {calendar.description}
                 </Typography>
             </Box>
         </Stack>
