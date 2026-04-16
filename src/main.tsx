@@ -7,6 +7,7 @@ import '@fontsource/roboto/700.css'
 import { BrowserRouter } from 'react-router'
 import App from './App.tsx'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { NuqsAdapter } from 'nuqs/adapters/react-router/v7'
 
 const queryClient = new QueryClient()
 
@@ -14,7 +15,9 @@ createRoot(document.getElementById('root')!).render(
     <StrictMode>
         <QueryClientProvider client={queryClient}>
             <BrowserRouter>
-                <App />
+                <NuqsAdapter>
+                    <App />
+                </NuqsAdapter>
             </BrowserRouter>
         </QueryClientProvider>
     </StrictMode>,

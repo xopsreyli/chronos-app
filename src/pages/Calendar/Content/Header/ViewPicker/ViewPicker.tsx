@@ -4,7 +4,8 @@ import { alpha, ToggleButtonGroup } from '@mui/material'
 import CalendarViewMonthIcon from '@mui/icons-material/CalendarViewMonth'
 import DateRangeIcon from '@mui/icons-material/DateRange'
 import ViewButton, { type ViewButtonProps } from './ViewButton/ViewButton.tsx'
-import { useState, type MouseEvent } from 'react'
+import { type MouseEvent } from 'react'
+import { useQueryState } from 'nuqs'
 
 const VIEW_BUTTONS: ViewButtonProps[] = [
     {
@@ -26,7 +27,9 @@ const VIEW_BUTTONS: ViewButtonProps[] = [
 ]
 
 const ViewPicker = () => {
-    const [view, setView] = useState<string>('upcoming')
+    const [view, setView] = useQueryState('view', {
+        defaultValue: 'upcoming',
+    })
 
     const handleViewChange = (
         _event: MouseEvent<HTMLElement>,
@@ -50,7 +53,7 @@ const ViewPicker = () => {
             }}
         >
             {VIEW_BUTTONS.map((viewButton) => (
-                <ViewButton {...viewButton} />
+                <ViewButton key={viewButton.value} {...viewButton} />
             ))}
         </ToggleButtonGroup>
     )

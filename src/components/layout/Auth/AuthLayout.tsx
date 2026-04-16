@@ -1,8 +1,17 @@
 import { Box, Container, Stack } from '@mui/material'
-import { Outlet } from 'react-router'
+import { Outlet, useNavigate } from 'react-router'
 import Logo from '../../ui/common/Logo/Logo.tsx'
+import useUser from '../../../hooks/useUser/useUser.ts'
+import { useEffect } from 'react'
 
 const AuthLayout = () => {
+    const navigate = useNavigate()
+    const { data: user } = useUser()
+
+    useEffect(() => {
+        if (user) navigate('/', { replace: true })
+    }, [user, navigate])
+
     return (
         <Container component="main" maxWidth="sm">
             <Stack

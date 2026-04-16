@@ -1,11 +1,22 @@
+import type { ReactElement } from 'react'
+import { useQueryState } from 'nuqs'
 import { Paper } from '@mui/material'
 import Header from './Header/Header.tsx'
-// import UpcomingView from './Views/UpcomingView/UpcomingView.tsx'
-// import WeekView from './Views/WeekView/WeekView.tsx'
+import UpcomingView from './Views/UpcomingView/UpcomingView.tsx'
+import WeekView from './Views/WeekView/WeekView.tsx'
 import MonthView from './Views/MonthView/MonthView.tsx'
-// import YearView from './Views/YearView/YearView.tsx'
+import YearView from './Views/YearView/YearView.tsx'
+
+const VIEWS: Record<string, ReactElement> = {
+    upcoming: <UpcomingView />,
+    week: <WeekView />,
+    month: <MonthView />,
+    year: <YearView />,
+}
 
 const Panel = () => {
+    const [view] = useQueryState('view')
+
     return (
         <Paper
             component="section"
@@ -18,7 +29,7 @@ const Panel = () => {
             }}
         >
             <Header />
-            <MonthView />
+            {view && VIEWS[view]}
         </Paper>
     )
 }
