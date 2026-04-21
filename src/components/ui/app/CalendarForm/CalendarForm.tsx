@@ -73,7 +73,7 @@ const CalendarForm = ({ calendar }: Props) => {
                         <TextField
                             autoFocus
                             type="text"
-                            label="Types Name *"
+                            label="Calendar Name *"
                             fullWidth
                             margin="dense"
                             helperText={errors.name?.message}

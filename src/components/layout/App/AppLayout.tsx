@@ -3,6 +3,7 @@ import { Outlet, useNavigate } from 'react-router'
 import AppDialog from '../../ui/app/AppDialog/AppDialog.tsx'
 import useUser from '../../../hooks/useUser/useUser.ts'
 import { useEffect } from 'react'
+import AppDrawer from '../../ui/app/AppDrawer/AppDrawer.tsx'
 
 const AppLayout = () => {
     const navigate = useNavigate()
@@ -17,6 +18,7 @@ const AppLayout = () => {
             <Header />
             <Outlet />
             <AppDialog />
+            <AppDrawer />
         </>
     )
 }
