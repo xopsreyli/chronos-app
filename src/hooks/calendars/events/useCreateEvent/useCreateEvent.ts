@@ -1,11 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import createEvent from '../../api/calendars/events/createEvent/createEvent.ts'
+import createEvent from '../../../../api/calendars/events/createEvent/createEvent.ts'
 import type {
     EventCreationData,
     EventType,
     Event,
     Events,
-} from '../../types/events/types.ts'
+} from '../../../../types/events/types.ts'
 
 const useCreateEvent = (calendarId: number, type: EventType) => {
     const queryClient = useQueryClient()

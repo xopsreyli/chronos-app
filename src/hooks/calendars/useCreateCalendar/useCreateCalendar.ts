@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import createCalendar from '../../api/calendars/createCalendar/createCalendar.ts'
+import createCalendar from '../../../api/calendars/createCalendar/createCalendar.ts'
 import { useNavigate } from 'react-router'
-import type { Calendar } from '../../types/calendar/types.ts'
-import useDialogStore from '../../stores/useDialogStore/useDIalogStore.ts'
+import type { Calendar } from '../../../types/calendar/types.ts'
+import useDialogStore from '../../../stores/useDialogStore/useDIalogStore.ts'
 
 const useCreateCalendar = () => {
     const navigate = useNavigate()

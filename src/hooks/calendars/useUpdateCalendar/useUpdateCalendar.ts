@@ -1,7 +1,7 @@
-import useDialogStore from '../../stores/useDialogStore/useDIalogStore.ts'
+import useDialogStore from '../../../stores/useDialogStore/useDIalogStore.ts'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import updateCalendar from '../../api/calendars/updateCalendar/updateCalendar.ts'
-import type { Calendar } from '../../types/calendar/types.ts'
+import updateCalendar from '../../../api/calendars/updateCalendar/updateCalendar.ts'
+import type { Calendar } from '../../../types/calendar/types.ts'
 
 const useUpdateCalendar = () => {
     const queryClient = useQueryClient()

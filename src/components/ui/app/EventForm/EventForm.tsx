@@ -19,7 +19,7 @@ import { ARRANGEMENT, REMINDER, TASK } from '../../../../enums/events/enums.ts'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { eventSchema } from '../../../../schemas/event/schemas.ts'
-import useCreateEvent from '../../../../hooks/useCreateEvent/useCreateEvent.ts'
+import useCreateEvent from '../../../../hooks/calendars/events/useCreateEvent/useCreateEvent.ts'
 import { useParams } from 'react-router'
 import useDrawerStore from '../../../../stores/useDrawerStore/useDrawerStore.ts'
 

@@ -11,13 +11,13 @@ import {
 import useDialogStore from '../../../../stores/useDialogStore/useDIalogStore.ts'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import useCreateCalendar from '../../../../hooks/useCreateCalendar/useCreateCalendar.ts'
+import useCreateCalendar from '../../../../hooks/calendars/useCreateCalendar/useCreateCalendar.ts'
 import ErrorMessage from '../../common/Form/ErrorMessage/ErrorMessage.tsx'
 import type {
     Calendar,
     CalendarFormData,
 } from '../../../../types/calendar/types.ts'
-import useUpdateCalendar from '../../../../hooks/useUpdateCalendar/useUpdateCalendar.ts'
+import useUpdateCalendar from '../../../../hooks/calendars/useUpdateCalendar/useUpdateCalendar.ts'
 import { calendarSchema } from '../../../../schemas/calendar/schemas.ts'
 
 type Props = {

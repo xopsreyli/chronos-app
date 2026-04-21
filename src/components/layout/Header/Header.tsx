@@ -1,7 +1,7 @@
 import { AppBar, Container, Toolbar } from '@mui/material'
 import Logo from '../../ui/common/Logo/Logo.tsx'
 import AuthButtons from './AuthButtons/AuthButtons.tsx'
-import useUser from '../../../hooks/useUser/useUser.ts'
+import useUser from '../../../hooks/users/current/useUser/useUser.ts'
 import UserMenu from './UserMenu/UserMenu.tsx'
 
 const Header = () => {

@@ -1,7 +1,7 @@
 import { Stack } from '@mui/material'
 import CalendarCard from './CalendarCard/CalendarCard.tsx'
 import CreateNewButton from './CreateNewButton/CreateNewButton.tsx'
-import useCalendars from '../../../../hooks/useCalendars/useCalendars.ts'
+import useCalendars from '../../../../hooks/calendars/useCalendars/useCalendars.ts'
 import Loader from '../../../../components/ui/common/Loader/Loader.tsx'
 import type { Types } from '../../../../types/calendar/types.ts'
 

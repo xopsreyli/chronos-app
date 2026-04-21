@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import deleteCalendar from '../../api/calendars/deleteCalendar/deleteCalendar.ts'
-import type { Calendar } from '../../types/calendar/types.ts'
+import deleteCalendar from '../../../api/calendars/deleteCalendar/deleteCalendar.ts'
+import type { Calendar } from '../../../types/calendar/types.ts'
 
 const useDeleteCalendar = () => {
     const queryClient = useQueryClient()

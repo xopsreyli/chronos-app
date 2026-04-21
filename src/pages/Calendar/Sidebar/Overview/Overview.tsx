@@ -4,7 +4,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications'
 import TaskAltIcon from '@mui/icons-material/TaskAlt'
 import StatItem from './StatItem/StatItem.tsx'
 import SectionTitle from '../../../../components/ui/app/Calendar/Sidebar/SectionTitle/SectionTitle.tsx'
-import useEvents from '../../../../hooks/useEvents/useEvents.ts'
+import useEvents from '../../../../hooks/calendars/events/useEvents/useEvents.ts'
 import { useParams } from 'react-router'
 
 const Overview = () => {

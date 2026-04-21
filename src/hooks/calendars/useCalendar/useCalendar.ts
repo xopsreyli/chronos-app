@@ -1,6 +1,6 @@
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import getCalendar from '../../api/calendars/getCalendar/getCalendar.ts'
-import type { Calendar } from '../../types/calendar/types.ts'
+import getCalendar from '../../../api/calendars/getCalendar/getCalendar.ts'
+import type { Calendar } from '../../../types/calendar/types.ts'
 
 const useCalendar = (id: number) => {
     const queryClient = useQueryClient()

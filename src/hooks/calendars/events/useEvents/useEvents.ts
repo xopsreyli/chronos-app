@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import getEvents from '../../api/calendars/events/getEvents/getEvents.ts'
+import getEvents from '../../../../api/calendars/events/getEvents/getEvents.ts'
 
 const useEvents = (calendarId: number) =>
     useQuery({

@@ -1,7 +1,7 @@
 import { Box, Container, Stack } from '@mui/material'
 import { Outlet, useNavigate } from 'react-router'
 import Logo from '../../ui/common/Logo/Logo.tsx'
-import useUser from '../../../hooks/useUser/useUser.ts'
+import useUser from '../../../hooks/users/current/useUser/useUser.ts'
 import { useEffect } from 'react'
 
 const AuthLayout = () => {
