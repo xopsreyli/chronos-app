@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 
 const calculateEventsRange = (view: string, date: string) => {
-    const currentDate = dayjs(date, 'DD-MM-YYYY')
+    const currentDate = dayjs(date, 'YYYY-MM-DD')
     let from = currentDate
     let to = currentDate
 
@@ -19,7 +19,7 @@ const calculateEventsRange = (view: string, date: string) => {
         to = currentDate.endOf('year')
     }
 
-    return [from.format('DD-MM-YYYY'), to.format('DD-MM-YYYY')]
+    return [from.format('YYYY-MM-DD'), to.format('YYYY-MM-DD')]
 }
 
 export default calculateEventsRange

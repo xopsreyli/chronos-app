@@ -9,12 +9,12 @@ const Header = () => {
         defaultValue: 'upcoming',
     })
     const [date, setDate] = useQueryState('date', {
-        defaultValue: dayjs().format('DD-MM-YYYY'),
+        defaultValue: dayjs().format('YYYY-MM-DD'),
         clearOnDefault: false,
     })
 
     const resolveTitle = () => {
-        const current = dayjs(date, 'DD-MM-YYYY')
+        const current = dayjs(date, 'YYYY-MM-DD')
         let title: string = ''
 
         if (view === 'upcoming') title = 'Upcoming Events'
@@ -27,7 +27,7 @@ const Header = () => {
     }
 
     const handleDateChange = (direction: 'prev' | 'next') => {
-        const current = dayjs(date, 'DD-MM-YYYY')
+        const current = dayjs(date, 'YYYY-MM-DD')
         let newDate = current
         const operation = direction === 'prev' ? 'subtract' : 'add'
 
@@ -35,7 +35,7 @@ const Header = () => {
         else if (view === 'month') newDate = current[operation](1, 'month')
         else if (view === 'year') newDate = current[operation](1, 'year')
 
-        setDate(newDate.format('DD-MM-YYYY'))
+        setDate(newDate.format('YYYY-MM-DD'))
     }
 
     return (

@@ -9,7 +9,7 @@ const useEvents = (calendarId: number) => {
         defaultValue: 'upcoming',
     })
     const [date] = useQueryState('date', {
-        defaultValue: dayjs().format('DD-MM-YYYY'),
+        defaultValue: dayjs().format('YYYY-MM-DD'),
     })
     const [from, to] = calculateEventsRange(view, date)
 
