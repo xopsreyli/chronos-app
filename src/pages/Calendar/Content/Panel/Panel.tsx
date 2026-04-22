@@ -15,7 +15,9 @@ const VIEWS: Record<string, ReactElement> = {
 }
 
 const Panel = () => {
-    const [view] = useQueryState('view')
+    const [view] = useQueryState('view', {
+        defaultValue: 'upcoming',
+    })
 
     return (
         <Paper
@@ -29,7 +31,7 @@ const Panel = () => {
             }}
         >
             <Header />
-            {view && VIEWS[view]}
+            {VIEWS[view]}
         </Paper>
     )
 }

@@ -29,6 +29,7 @@ const VIEW_BUTTONS: ViewButtonProps[] = [
 const ViewPicker = () => {
     const [view, setView] = useQueryState('view', {
         defaultValue: 'upcoming',
+        clearOnDefault: false,
     })
 
     const handleViewChange = (

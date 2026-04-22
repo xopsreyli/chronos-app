@@ -1,8 +1,13 @@
 import type { Events } from '../../../../types/events/types.ts'
 
-const getEvents = async (calendarId: number): Promise<Events> => {
+const getEvents = async (
+    calendarId: number,
+    from: string,
+    to: string,
+): Promise<Events> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + `/calendars/${calendarId}/events`,
+        import.meta.env.VITE_APP_API +
+            `/calendars/${calendarId}/events?from=${from}&to=${to}`,
         {
             method: 'GET',
             credentials: 'include',
