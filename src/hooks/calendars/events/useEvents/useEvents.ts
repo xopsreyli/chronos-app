@@ -14,9 +14,8 @@ const useEvents = (calendarId: number) => {
     const [from, to] = calculateEventsRange(view, date)
 
     return useQuery({
-        queryKey: ['events', calendarId],
+        queryKey: ['events', calendarId, view, date],
         queryFn: () => getEvents(calendarId, from, to),
-        staleTime: Infinity,
     })
 }
 

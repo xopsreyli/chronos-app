@@ -69,7 +69,9 @@ const EventForm = () => {
             creationData = {
                 title: data.title,
                 description: data.description,
-                date: data.date.toDate(),
+                dateTime: new Date(
+                    `${data.date.format('YYYY-MM-DD')}T00:00:00.000Z`,
+                ),
             }
         }
 
