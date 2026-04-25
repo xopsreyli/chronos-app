@@ -15,7 +15,10 @@ export type Events = {
     tasks: Task[]
 }
 
-export type OmitEventCreation<T> = Omit<T, 'id' | 'calendarId' | 'userId'>
+export type OmitEventCreation<T> = Omit<
+    T,
+    'id' | 'calendarId' | 'userId' | 'type'
+>
 export type EventCreationData =
     | OmitEventCreation<Arrangement>
     | OmitEventCreation<Reminder>

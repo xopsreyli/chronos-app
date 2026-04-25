@@ -2,8 +2,19 @@ import { Box, Card, CardContent, Stack, Typography } from '@mui/material'
 import RoundIcon from '../../../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
 import EventIcon from '@mui/icons-material/Event'
 import Tag from './Tag/Tag.tsx'
+import type { Event } from '../../../../../../../types/events/types.ts'
+import {
+    ARRANGEMENT,
+    REMINDER,
+    TASK,
+} from '../../../../../../../enums/events/enums.ts'
+import dayjs from 'dayjs'
 
-const UpcomingEventCard = () => {
+type Props = {
+    event: Event
+}
+
+const UpcomingEventCard = ({ event }: Props) => {
     return (
         <Card
             elevation={0}
@@ -48,16 +59,21 @@ const UpcomingEventCard = () => {
                                 fontWeight: '600',
                             }}
                         >
-                            Team Meeting
+                            {event.title}
                         </Typography>
                         <Typography
                             variant="body2"
                             color="text.secondary"
                             sx={{
+                                height: '1lh',
+                                display: '-webkit-box',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 1,
+                                overflow: 'hidden',
                                 mb: 1,
                             }}
                         >
-                            Weekly sync with the team
+                            {event.description}
                         </Typography>
                         <Stack
                             direction="row"
@@ -67,11 +83,57 @@ const UpcomingEventCard = () => {
                                 alignItems: 'center',
                             }}
                         >
-                            <Tag label={'Tue, Mar 10'} />
-                            <Tag
-                                label={'10:00 AM - 11:00 AM'}
-                                color={'#7FFF94'}
-                            />
+                            {event.type === ARRANGEMENT &&
+                                (() => {
+                                    const from = dayjs(event.from)
+                                    const to = dayjs(event.to)
+                                    const isSameDate = from.isSame(to, 'day')
+
+                                    if (isSameDate) {
+                                        return (
+                                            <>
+                                                <Tag
+                                                    label={from.format(
+                                                        'ddd, MMM DD',
+                                                    )}
+                                                />
+                                                <Tag
+                                                    label={`${from.format('hh:mm A')} - ${to.format('hh:mm A')}`}
+                                                    color={'#7FFF94'}
+                                                />
+                                            </>
+                                        )
+                                    }
+
+                                    const isSameYear = from.isSame(to, 'year')
+                                    const label = isSameYear
+                                        ? `${from.format('DD MMM')} - ${to.format('DD MMM, YYYY')}`
+                                        : `${from.format('DD MMM, YYYY')} - ${to.format('DD MMM, YYYY')}`
+
+                                    return <Tag label={label} />
+                                })()}
+                            {event.type === REMINDER && (
+                                <>
+                                    <Tag
+                                        label={dayjs(event.dateTime).format(
+                                            'ddd, MMM DD',
+                                        )}
+                                    />
+                                    <Tag
+                                        label={dayjs(event.dateTime).format(
+                                            'hh:mm A',
+                                        )}
+                                        color={'#7FFF94'}
+                                    />
+                                </>
+                            )}
+                            {event.type === TASK && (
+                                <Tag
+                                    label={dayjs(event.dateTime).format(
+                                        'ddd, MMM DD',
+                                    )}
+                                />
+                            )}
                         </Stack>
                     </Box>
                 </Stack>

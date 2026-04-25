@@ -1,10 +1,14 @@
 import { Box, Stack, Typography } from '@mui/material'
+import EventIndicator from './EventIndicator/EventIndicator.tsx'
 
 type Props = {
     date: number
+    isArrangement: boolean
+    isReminder: boolean
+    isTask: boolean
 }
 
-const DayCell = ({ date }: Props) => {
+const DayCell = ({ date, isArrangement, isReminder, isTask }: Props) => {
     return (
         <Box
             sx={{
@@ -34,33 +38,9 @@ const DayCell = ({ date }: Props) => {
                     bottom: 8,
                 }}
             >
-                <Box
-                    component={'span'}
-                    sx={{
-                        width: 6,
-                        aspectRatio: 1,
-                        borderRadius: '50%',
-                        backgroundColor: '#7FFFD4',
-                    }}
-                ></Box>
-                <Box
-                    component={'span'}
-                    sx={{
-                        width: 6,
-                        aspectRatio: 1,
-                        borderRadius: '50%',
-                        backgroundColor: '#7FFFD4',
-                    }}
-                ></Box>
-                <Box
-                    component={'span'}
-                    sx={{
-                        width: 6,
-                        aspectRatio: 1,
-                        borderRadius: '50%',
-                        backgroundColor: '#7FFFD4',
-                    }}
-                ></Box>
+                {isArrangement && <EventIndicator color={'#7FFFD4'} />}
+                {isReminder && <EventIndicator color={'#7FFFD4'} />}
+                {isTask && <EventIndicator color={'#7FFFD4'} />}
             </Stack>
         </Box>
     )

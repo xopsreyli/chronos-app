@@ -1,12 +1,14 @@
 import { Card, CardContent, Stack, Typography } from '@mui/material'
-import Event from './Event/Event'
+import EventCard from './Event/Event'
+import { type Event } from '../../../../../../../types/events/types.ts'
+import { type Dayjs } from 'dayjs'
 
 type Props = {
-    weekDay: string
-    date: number
+    day: Dayjs
+    events: Event[]
 }
 
-const DayCard = ({ weekDay, date }: Props) => {
+const DayCard = ({ day, events }: Props) => {
     return (
         <Card
             elevation={0}
@@ -41,7 +43,7 @@ const DayCard = ({ weekDay, date }: Props) => {
                         mb: 0.5,
                     }}
                 >
-                    {weekDay}
+                    {day.format('ddd')}
                 </Typography>
                 <Typography
                     variant="subtitle2"
@@ -49,10 +51,12 @@ const DayCard = ({ weekDay, date }: Props) => {
                         mb: 1,
                     }}
                 >
-                    {date}
+                    {day.date()}
                 </Typography>
                 <Stack spacing={0.5} useFlexGap>
-                    <Event title={'Team Meeting'} />
+                    {events.map((event) => (
+                        <EventCard key={event.id} title={event.title} />
+                    ))}
                 </Stack>
             </CardContent>
         </Card>

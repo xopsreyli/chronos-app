@@ -1,10 +1,12 @@
 import { Card, CardContent, Typography } from '@mui/material'
+import dayjs from 'dayjs'
 
 type Props = {
-    month: string
+    monthIndex: number
+    numberOfEvents: number
 }
 
-const MonthCard = ({ month }: Props) => {
+const MonthCard = ({ monthIndex, numberOfEvents }: Props) => {
     return (
         <Card
             elevation={0}
@@ -26,7 +28,7 @@ const MonthCard = ({ month }: Props) => {
                         mb: 2,
                     }}
                 >
-                    {month}
+                    {dayjs().month(monthIndex).format('MMMM')}
                 </Typography>
                 <Typography
                     color="text.secondary"
@@ -34,7 +36,7 @@ const MonthCard = ({ month }: Props) => {
                         fontSize: '0.75rem',
                     }}
                 >
-                    0 events
+                    {`${numberOfEvents} events`}
                 </Typography>
             </CardContent>
         </Card>

@@ -3,8 +3,11 @@ import getEvents from '../../../../api/calendars/events/getEvents/getEvents.ts'
 import { useQueryState } from 'nuqs'
 import calculateEventsRange from '../../../../utils/eventsRange/calculateEventsRange.ts'
 import dayjs from 'dayjs'
+import { useParams } from 'react-router'
 
-const useEvents = (calendarId: number) => {
+const useEvents = () => {
+    const { id } = useParams()
+    const calendarId = Number(id)
     const [view] = useQueryState('view', {
         defaultValue: 'upcoming',
     })
