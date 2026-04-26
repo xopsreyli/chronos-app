@@ -107,7 +107,7 @@ const MonthView = () => {
                 <Grid key={i} size={1}>
                     {d !== 0 && (
                         <DayCell
-                            date={d}
+                            day={d}
                             isArrangement={
                                 isEventsByDay[d]?.isArrangement ?? false
                             }

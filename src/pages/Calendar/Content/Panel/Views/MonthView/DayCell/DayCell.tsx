@@ -1,14 +1,23 @@
 import { Box, Stack, Typography } from '@mui/material'
 import EventIndicator from './EventIndicator/EventIndicator.tsx'
+import { useQueryState } from 'nuqs'
+import dayjs from 'dayjs'
 
 type Props = {
-    date: number
+    day: number
     isArrangement: boolean
     isReminder: boolean
     isTask: boolean
 }
 
-const DayCell = ({ date, isArrangement, isReminder, isTask }: Props) => {
+const DayCell = ({ day, isArrangement, isReminder, isTask }: Props) => {
+    const [date] = useQueryState('date', {
+        defaultValue: dayjs().format('YYYY-MM-DD'),
+    })
+    const current = dayjs(date)
+    const today = dayjs()
+    const isCurrentDay = current.isSame(today, 'month') && day === today.date()
+
     return (
         <Box
             sx={{
@@ -18,16 +27,23 @@ const DayCell = ({ date, isArrangement, isReminder, isTask }: Props) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: 'grey.50',
+                backgroundColor: isCurrentDay ? '#7FFFD4' : 'grey.50',
                 borderRadius: 2,
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                    backgroundColor: 'grey.100',
+                    backgroundColor: isCurrentDay ? '#4dd9a8' : 'grey.100',
                 },
             }}
         >
-            <Typography component={'span'} variant={'body2'}>
-                {date}
+            <Typography
+                component={'span'}
+                variant={'body2'}
+                sx={{
+                    color: isCurrentDay ? '#fff' : 'inherit',
+                    fontWeight: isCurrentDay ? 'bold' : 'normal',
+                }}
+            >
+                {day}
             </Typography>
             <Stack
                 direction={'row'}

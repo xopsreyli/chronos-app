@@ -1,7 +1,8 @@
-import { Card, CardContent, Stack, Typography } from '@mui/material'
+import { alpha, Card, CardContent, Stack, Typography } from '@mui/material'
 import EventCard from './Event/Event'
 import { type Event } from '../../../../../../../types/events/types.ts'
-import { type Dayjs } from 'dayjs'
+import dayjs, { type Dayjs } from 'dayjs'
+import { useQueryState } from 'nuqs'
 
 type Props = {
     day: Dayjs
@@ -9,6 +10,14 @@ type Props = {
 }
 
 const DayCard = ({ day, events }: Props) => {
+    const [date] = useQueryState('date', {
+        defaultValue: dayjs().format('YYYY-MM-DD'),
+    })
+    const current = dayjs(date)
+    const today = dayjs()
+    const isCurrentDay =
+        current.isSame(today, 'month') && day.date() === today.date()
+
     return (
         <Card
             elevation={0}
@@ -18,7 +27,8 @@ const DayCard = ({ day, events }: Props) => {
                 overflow: 'visible',
                 flex: 1,
                 border: '1px solid',
-                borderColor: 'grey.100',
+                borderColor: isCurrentDay ? '#7FFFD4' : 'grey.100',
+                backgroundColor: isCurrentDay ? alpha('#7FFF94', 0.1) : '#fff',
                 transition: 'all 0.2s ease',
                 '&:hover': {
                     borderColor: 'primary.light',
@@ -35,8 +45,8 @@ const DayCard = ({ day, events }: Props) => {
                 }}
             >
                 <Typography
-                    color="text.secondary"
                     sx={{
+                        color: isCurrentDay ? '#7FFFD4' : '#64748b',
                         fontSize: 12,
                         fontWeight: 600,
                         letterSpacing: '0.05em',
@@ -48,6 +58,7 @@ const DayCard = ({ day, events }: Props) => {
                 <Typography
                     variant="subtitle2"
                     sx={{
+                        color: isCurrentDay ? '#7FFFD4' : 'inherit',
                         mb: 1,
                     }}
                 >
