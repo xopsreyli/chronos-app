@@ -1,10 +1,11 @@
 import { alpha, Box, Typography } from '@mui/material'
+import type { Event } from '../../../../../../../../types/events/types.ts'
 
 type Props = {
-    title: string
+    event: Event
 }
 
-const Event = ({ title }: Props) => {
+const EventCard = ({ event }: Props) => {
     return (
         <Box
             sx={{
@@ -18,14 +19,18 @@ const Event = ({ title }: Props) => {
         >
             <Typography
                 sx={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 1,
+                    overflow: 'hidden',
                     fontSize: '0.75rem',
                     fontWeight: '500',
                 }}
             >
-                {title}
+                {event.title}
             </Typography>
         </Box>
     )
 }
 
-export default Event
+export default EventCard

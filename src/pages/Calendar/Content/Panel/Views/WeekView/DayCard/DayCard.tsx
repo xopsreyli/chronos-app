@@ -1,5 +1,5 @@
 import { alpha, Card, CardContent, Stack, Typography } from '@mui/material'
-import EventCard from './Event/Event'
+import EventCard from './EventCard/EventCard.tsx'
 import { type Event } from '../../../../../../../types/events/types.ts'
 import dayjs, { type Dayjs } from 'dayjs'
 import { useQueryState } from 'nuqs'
@@ -66,7 +66,10 @@ const DayCard = ({ day, events }: Props) => {
                 </Typography>
                 <Stack spacing={0.5} useFlexGap>
                     {events.map((event) => (
-                        <EventCard key={event.id} title={event.title} />
+                        <EventCard
+                            key={`${event.type}-${event.id}`}
+                            event={event}
+                        />
                     ))}
                 </Stack>
             </CardContent>
