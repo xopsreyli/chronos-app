@@ -9,16 +9,26 @@ import {
     TASK,
 } from '../../../../../../../enums/events/enums.ts'
 import dayjs from 'dayjs'
+import useDrawerStore from '../../../../../../../stores/useDrawerStore/useDrawerStore.ts'
+import EventDetails from '../../../../../../../components/ui/app/EventDetails/EventDetails.tsx'
 
 type Props = {
     event: Event
 }
 
 const UpcomingEventCard = ({ event }: Props) => {
+    const open = useDrawerStore((state) => state.open)
+
+    const handleClick = () => {
+        open('right', <EventDetails event={event} />)
+    }
+
     return (
         <Card
+            onClick={handleClick}
             elevation={0}
             sx={{
+                cursor: 'pointer',
                 border: '1px solid',
                 borderColor: 'grey.100',
                 borderLeft: '4px solid',
