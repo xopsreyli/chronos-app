@@ -1,4 +1,4 @@
-import { Stack } from '@mui/material'
+import { Stack, Typography } from '@mui/material'
 import UpcomingEventCard from './UpcomingEventCard/UpcomingEventCard.tsx'
 import useEvents from '../../../../../../hooks/calendars/events/useEvents/useEvents.ts'
 import type { Event } from '../../../../../../types/events/types.ts'
@@ -23,6 +23,14 @@ const UpcomingView = () => {
             ...events.tasks,
         ].sort((a, b) => (getEventDate(a).isBefore(getEventDate(b)) ? -1 : 1))
     }, [events])
+
+    if (sortedEvents.length === 0) {
+        return (
+            <Typography variant="body2" color={'text.secondary'}>
+                No upcoming events. Enjoy your free time!
+            </Typography>
+        )
+    }
 
     return (
         <Stack spacing={2} useFlexGap>
