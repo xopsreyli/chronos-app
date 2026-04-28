@@ -28,7 +28,7 @@ const CalendarForm = ({ calendar }: Props) => {
     const {
         register,
         handleSubmit,
-        formState: { errors, isValid },
+        formState: { errors, isValid, isDirty, dirtyFields },
     } = useForm<CalendarFormData>({
         defaultValues: calendar
             ? {
@@ -48,7 +48,13 @@ const CalendarForm = ({ calendar }: Props) => {
 
     const onSubmit = (data: CalendarFormData) => {
         if (calendar) {
-            updateMutation.mutate({ id: calendar.id, ...data })
+            let updationData: Partial<Omit<Calendar, 'id'>> = {}
+            for (let key in dirtyFields) {
+                const k = key as keyof Omit<Calendar, 'id'>
+                updationData[k] = data[k]
+            }
+
+            updateMutation.mutate({ id: calendar.id, ...updationData })
         } else {
             createMutation.mutate(data)
         }
@@ -124,7 +130,7 @@ const CalendarForm = ({ calendar }: Props) => {
                     form={'calendar-form'}
                     size={'large'}
                     variant="contained"
-                    disabled={!isValid}
+                    disabled={!isValid || (calendar && !isDirty)}
                     loading={isPending}
                     sx={{
                         textTransform: 'capitalize',
