@@ -12,6 +12,7 @@ type State = {
 type Actions = {
     open: (anchor: Anchor, content: ReactNode) => void
     close: () => void
+    setContent: (content: ReactNode) => void
 }
 
 type DrawerStore = State & Actions
@@ -31,6 +32,7 @@ const useDrawerStore = create<DrawerStore>()((set) => ({
             isOpen: false,
             content: null,
         }),
+    setContent: (content) => set({ content: content }),
 }))
 
 export default useDrawerStore

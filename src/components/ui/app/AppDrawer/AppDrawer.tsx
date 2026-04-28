@@ -18,6 +18,7 @@ const AppDrawer = () => {
             <Header />
             <Box
                 sx={{
+                    width: 400,
                     flex: 1,
                     display: 'flex',
                     flexDirection: 'column',

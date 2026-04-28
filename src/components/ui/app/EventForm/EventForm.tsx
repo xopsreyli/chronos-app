@@ -13,6 +13,7 @@ import {
 import { MobileDatePicker, MobileDateTimePicker } from '@mui/x-date-pickers'
 import type {
     EventFormData,
+    Event,
     EventType,
 } from '../../../../types/events/types.ts'
 import { ARRANGEMENT, REMINDER, TASK } from '../../../../enums/events/enums.ts'
@@ -22,8 +23,16 @@ import { eventSchema } from '../../../../schemas/event/schemas.ts'
 import useCreateEvent from '../../../../hooks/calendars/events/useCreateEvent/useCreateEvent.ts'
 import { useParams } from 'react-router'
 import useDrawerStore from '../../../../stores/useDrawerStore/useDrawerStore.ts'
+import dayjs from 'dayjs'
+import useUpdateEvent from '../../../../hooks/events/useUpdateEvent/useUpdateEvent.ts'
+import EventDetails from '../EventDetails/EventDetails.tsx'
+import ErrorMessage from '../../common/Form/ErrorMessage/ErrorMessage.tsx'
 
-const EventForm = () => {
+type Props = {
+    event?: Event
+}
+
+const EventForm = ({ event }: Props) => {
     const { id } = useParams()
     const {
         register,
@@ -32,16 +41,37 @@ const EventForm = () => {
         watch,
         reset,
         setValue,
-        formState: { errors, isValid },
+        formState: { errors, isValid, isDirty, dirtyFields },
     } = useForm<EventFormData>({
-        defaultValues: {
-            type: TASK,
-        },
+        defaultValues: event
+            ? {
+                  type: event.type,
+                  title: event.title,
+                  description: event.description,
+                  ...(event.type === ARRANGEMENT && {
+                      from: dayjs(event.from),
+                      to: dayjs(event.to),
+                  }),
+                  ...(event.type === REMINDER && {
+                      dateTime: dayjs(event.dateTime),
+                  }),
+                  ...(event.type === TASK && {
+                      date: dayjs(event.dateTime),
+                  }),
+              }
+            : {
+                  type: TASK,
+              },
         resolver: zodResolver(eventSchema),
     })
     const watchType = watch('type')
-    const { mutate, isPending } = useCreateEvent(Number(id), watchType)
+    const createMutation = useCreateEvent(Number(id), watchType)
+    const updateMutation = useUpdateEvent(event)
+    const { isPending, isError, error } = event
+        ? updateMutation
+        : createMutation
     const close = useDrawerStore((state) => state.close)
+    const setContent = useDrawerStore((state) => state.setContent)
 
     const handleTypeChange = (event: SelectChangeEvent) => {
         const newType = event.target.value as EventType
@@ -50,36 +80,50 @@ const EventForm = () => {
     }
 
     const onSubmit = (data: EventFormData) => {
-        let creationData
+        if (event) {
+            let updationData: Partial<EventFormData> = {}
+            for (let key in dirtyFields) {
+                const k = key as keyof EventFormData
+                updationData[k] = data[k] as any
+            }
 
-        if (data.type === ARRANGEMENT) {
-            creationData = {
-                title: data.title,
-                description: data.description,
-                from: data.from.toDate(),
-                to: data.to.toDate(),
+            updateMutation.mutate(updationData, {
+                onSuccess: (event: Event) => {
+                    setContent(<EventDetails event={event} />)
+                },
+            })
+        } else {
+            let creationData
+
+            if (data.type === ARRANGEMENT) {
+                creationData = {
+                    title: data.title,
+                    description: data.description,
+                    from: data.from.toDate(),
+                    to: data.to.toDate(),
+                }
+            } else if (data.type === REMINDER) {
+                creationData = {
+                    title: data.title,
+                    description: data.description,
+                    dateTime: data.dateTime.toDate(),
+                }
+            } else if (data.type === TASK) {
+                creationData = {
+                    title: data.title,
+                    description: data.description,
+                    dateTime: new Date(
+                        `${data.date.format('YYYY-MM-DD')}T00:00:00.000Z`,
+                    ),
+                }
             }
-        } else if (data.type === REMINDER) {
-            creationData = {
-                title: data.title,
-                description: data.description,
-                dateTime: data.dateTime.toDate(),
-            }
-        } else if (data.type === TASK) {
-            creationData = {
-                title: data.title,
-                description: data.description,
-                dateTime: new Date(
-                    `${data.date.format('YYYY-MM-DD')}T00:00:00.000Z`,
-                ),
-            }
+
+            createMutation.mutate(creationData!, {
+                onSuccess: () => {
+                    close()
+                },
+            })
         }
-
-        mutate(creationData!, {
-            onSuccess: () => {
-                close()
-            },
-        })
     }
 
     const renderWhenFields = () => {
@@ -91,6 +135,7 @@ const EventForm = () => {
                         control={control}
                         render={({ field }) => (
                             <MobileDateTimePicker
+                                value={field.value ?? null}
                                 onChange={field.onChange}
                                 label="Start"
                                 yearsOrder="desc"
@@ -114,6 +159,7 @@ const EventForm = () => {
                         control={control}
                         render={({ field }) => (
                             <MobileDateTimePicker
+                                value={field.value ?? null}
                                 onChange={field.onChange}
                                 label="End"
                                 yearsOrder="desc"
@@ -140,6 +186,7 @@ const EventForm = () => {
                     control={control}
                     render={({ field }) => (
                         <MobileDateTimePicker
+                            value={field.value ?? null}
                             onChange={field.onChange}
                             label="Remind at "
                             yearsOrder="desc"
@@ -166,6 +213,7 @@ const EventForm = () => {
                     control={control}
                     render={({ field }) => (
                         <MobileDatePicker
+                            value={field.value ?? null}
                             onChange={field.onChange}
                             label="Task Date"
                             yearsOrder="desc"
@@ -190,7 +238,6 @@ const EventForm = () => {
             component="form"
             onSubmit={handleSubmit(onSubmit)}
             sx={{
-                width: 368,
                 flex: 1,
             }}
         >
@@ -200,7 +247,7 @@ const EventForm = () => {
                     mb: 2,
                 }}
             >
-                Create new event
+                {event ? 'Update event' : 'Create new event'}
             </Typography>
             <Stack
                 spacing={1}
@@ -221,6 +268,7 @@ const EventForm = () => {
                         labelId="event-type"
                         label="Event Type"
                         onChange={handleTypeChange}
+                        disabled={!!event}
                     >
                         <MenuItem value={ARRANGEMENT}>Arrangement</MenuItem>
                         <MenuItem value={REMINDER}>Reminder</MenuItem>
@@ -261,20 +309,21 @@ const EventForm = () => {
                     >{`Pick a ${watchType === TASK ? 'date' : 'date and time'}:`}</Typography>
                     {renderWhenFields()}
                 </Box>
+                {isError && <ErrorMessage message={error.message} />}
             </Stack>
             <Button
                 type="submit"
                 variant="contained"
                 fullWidth
                 size="small"
-                disabled={!isValid}
+                disabled={!isValid || (event && !isDirty)}
                 loading={isPending}
                 sx={{
                     fontWeight: 700,
                     mt: 4,
                 }}
             >
-                create
+                {event ? 'update' : 'create'}
             </Button>
         </Stack>
     )

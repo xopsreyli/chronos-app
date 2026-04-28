@@ -24,3 +24,5 @@ export type EventCreationData =
     | OmitEventCreation<Reminder>
     | OmitEventCreation<Task>
 export type EventFormData = z.infer<typeof eventSchema>
+
+export type EventUpdationData = Partial<EventCreationData>
