@@ -1,6 +1,7 @@
 import { alpha, Card, CardContent, Typography } from '@mui/material'
 import dayjs from 'dayjs'
 import { useQueryState } from 'nuqs'
+import { MONTH } from '../../../../../../../enums/views/enums.ts'
 
 type Props = {
     monthIndex: number
@@ -8,7 +9,8 @@ type Props = {
 }
 
 const MonthCard = ({ monthIndex, numberOfEvents }: Props) => {
-    const [date] = useQueryState('date', {
+    const [, setView] = useQueryState('view')
+    const [date, setDate] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
     const current = dayjs(date)
@@ -16,8 +18,14 @@ const MonthCard = ({ monthIndex, numberOfEvents }: Props) => {
     const isCurrentMonth =
         current.isSame(today, 'year') && monthIndex === today.month()
 
+    const handleClick = () => {
+        setDate(current.set('month', monthIndex).format('YYYY-MM-DD'))
+        setView(MONTH)
+    }
+
     return (
         <Card
+            onClick={handleClick}
             elevation={0}
             sx={{
                 cursor: 'pointer',

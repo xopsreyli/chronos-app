@@ -3,6 +3,7 @@ import EventCard from './EventCard/EventCard.tsx'
 import { type Event } from '../../../../../../../types/events/types.ts'
 import dayjs, { type Dayjs } from 'dayjs'
 import { useQueryState } from 'nuqs'
+import { DAY } from '../../../../../../../enums/views/enums.ts'
 
 type Props = {
     day: Dayjs
@@ -10,7 +11,8 @@ type Props = {
 }
 
 const DayCard = ({ day, events }: Props) => {
-    const [date] = useQueryState('date', {
+    const [, setView] = useQueryState('view')
+    const [date, setDate] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
     const current = dayjs(date)
@@ -18,8 +20,14 @@ const DayCard = ({ day, events }: Props) => {
     const isCurrentDay =
         current.isSame(today, 'month') && day.date() === today.date()
 
+    const handleClick = () => {
+        setDate(current.set('date', day.date()).format('YYYY-MM-DD'))
+        setView(DAY)
+    }
+
     return (
         <Card
+            onClick={handleClick}
             elevation={0}
             sx={{
                 cursor: 'pointer',

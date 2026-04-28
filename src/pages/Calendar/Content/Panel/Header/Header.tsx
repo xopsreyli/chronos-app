@@ -25,7 +25,7 @@ const Header = () => {
         let title: string = ''
 
         if (view === UPCOMING) title = 'Upcoming Events'
-        else if (view === DAY) title = current.format('DD MMMM, YYYY')
+        else if (view === DAY) title = current.format('D MMMM, YYYY')
         else if (view === WEEK)
             title = `${current.startOf('week').format('MMM D')} - ${current.endOf('week').format('MMM D, YYYY')}`
         else if (view === MONTH) title = current.format('MMMM, YYYY')

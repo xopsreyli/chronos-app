@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from '@mui/material'
 import EventIndicator from './EventIndicator/EventIndicator.tsx'
 import { useQueryState } from 'nuqs'
 import dayjs from 'dayjs'
+import { DAY } from '../../../../../../../enums/views/enums.ts'
 
 type Props = {
     day: number
@@ -11,15 +12,22 @@ type Props = {
 }
 
 const DayCell = ({ day, isArrangement, isReminder, isTask }: Props) => {
-    const [date] = useQueryState('date', {
+    const [, setView] = useQueryState('view')
+    const [date, setDate] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
     const current = dayjs(date)
     const today = dayjs()
     const isCurrentDay = current.isSame(today, 'month') && day === today.date()
 
+    const handleClick = () => {
+        setDate(current.set('date', day).format('YYYY-MM-DD'))
+        setView(DAY)
+    }
+
     return (
         <Box
+            onClick={handleClick}
             sx={{
                 cursor: 'pointer',
                 position: 'relative',

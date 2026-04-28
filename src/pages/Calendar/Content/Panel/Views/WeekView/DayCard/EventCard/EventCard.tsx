@@ -1,3 +1,4 @@
+import { type MouseEvent } from 'react'
 import { alpha, Box, Typography } from '@mui/material'
 import type { Event } from '../../../../../../../../types/events/types.ts'
 import useDrawerStore from '../../../../../../../../stores/useDrawerStore/useDrawerStore.ts'
@@ -10,7 +11,8 @@ type Props = {
 const EventCard = ({ event }: Props) => {
     const open = useDrawerStore((state) => state.open)
 
-    const handleClick = () => {
+    const handleClick = (e: MouseEvent) => {
+        e.stopPropagation()
         open('right', <EventDetails event={event} />)
     }
 
