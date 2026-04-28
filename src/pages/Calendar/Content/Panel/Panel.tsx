@@ -6,17 +6,19 @@ import UpcomingView from './Views/UpcomingView/UpcomingView.tsx'
 import WeekView from './Views/WeekView/WeekView.tsx'
 import MonthView from './Views/MonthView/MonthView.tsx'
 import YearView from './Views/YearView/YearView.tsx'
+import type {View} from "../../../../types/views/types.ts";
+import {MONTH, UPCOMING, WEEK, YEAR} from "../../../../enums/views/enums.ts";
 
-const VIEWS: Record<string, ReactElement> = {
-    upcoming: <UpcomingView />,
-    week: <WeekView />,
-    month: <MonthView />,
-    year: <YearView />,
+const VIEWS: Record<View, ReactElement> = {
+    [UPCOMING]: <UpcomingView />,
+    [WEEK]: <WeekView />,
+    [MONTH]: <MonthView />,
+    [YEAR]: <YearView />,
 }
 
 const Panel = () => {
     const [view] = useQueryState('view', {
-        defaultValue: 'upcoming',
+        defaultValue: UPCOMING,
     })
 
     return (
@@ -31,7 +33,7 @@ const Panel = () => {
             }}
         >
             <Header />
-            {VIEWS[view]}
+            {VIEWS[view as View]}
         </Paper>
     )
 }

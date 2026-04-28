@@ -6,35 +6,37 @@ import DateRangeIcon from '@mui/icons-material/DateRange'
 import ViewButton, { type ViewButtonProps } from './ViewButton/ViewButton.tsx'
 import { type MouseEvent } from 'react'
 import { useQueryState } from 'nuqs'
+import {MONTH, UPCOMING, WEEK, YEAR} from "../../../../../enums/views/enums.ts";
+import type {View} from "../../../../../types/views/types.ts";
 
 const VIEW_BUTTONS: ViewButtonProps[] = [
     {
-        value: 'upcoming',
+        value: UPCOMING,
         Icon: ViewListIcon,
     },
     {
-        value: 'week',
+        value: WEEK,
         Icon: ViewWeekIcon,
     },
     {
-        value: 'month',
+        value: MONTH,
         Icon: CalendarViewMonthIcon,
     },
     {
-        value: 'year',
+        value: YEAR,
         Icon: DateRangeIcon,
     },
 ]
 
 const ViewPicker = () => {
     const [view, setView] = useQueryState('view', {
-        defaultValue: 'upcoming',
+        defaultValue: UPCOMING,
         clearOnDefault: false,
     })
 
     const handleViewChange = (
         _event: MouseEvent<HTMLElement>,
-        newView: string | null,
+        newView: View | null,
     ) => {
         if (newView) {
             setView(newView)

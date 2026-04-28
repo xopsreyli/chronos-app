@@ -1,8 +1,9 @@
 import type { SvgIconComponent } from '@mui/icons-material'
 import { ToggleButton, Typography } from '@mui/material'
+import type {View} from "../../../../../../types/views/types.ts";
 
 export type ViewButtonProps = {
-    value: string
+    value: View
     Icon: SvgIconComponent
 }
 
