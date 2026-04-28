@@ -6,11 +6,19 @@ import UpcomingView from './Views/UpcomingView/UpcomingView.tsx'
 import WeekView from './Views/WeekView/WeekView.tsx'
 import MonthView from './Views/MonthView/MonthView.tsx'
 import YearView from './Views/YearView/YearView.tsx'
-import type {View} from "../../../../types/views/types.ts";
-import {MONTH, UPCOMING, WEEK, YEAR} from "../../../../enums/views/enums.ts";
+import type { View } from '../../../../types/views/types.ts'
+import {
+    DAY,
+    MONTH,
+    UPCOMING,
+    WEEK,
+    YEAR,
+} from '../../../../enums/views/enums.ts'
+import DayView from './Views/DayView/DayView.tsx'
 
 const VIEWS: Record<View, ReactElement> = {
     [UPCOMING]: <UpcomingView />,
+    [DAY]: <DayView />,
     [WEEK]: <WeekView />,
     [MONTH]: <MonthView />,
     [YEAR]: <YearView />,

@@ -3,7 +3,13 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { IconButton, Stack, Typography } from '@mui/material'
 import { useQueryState } from 'nuqs'
 import dayjs from 'dayjs'
-import {MONTH, UPCOMING, WEEK, YEAR} from "../../../../../enums/views/enums.ts";
+import {
+    DAY,
+    MONTH,
+    UPCOMING,
+    WEEK,
+    YEAR,
+} from '../../../../../enums/views/enums.ts'
 
 const Header = () => {
     const [view] = useQueryState('view', {
@@ -19,6 +25,7 @@ const Header = () => {
         let title: string = ''
 
         if (view === UPCOMING) title = 'Upcoming Events'
+        else if (view === DAY) title = current.format('DD MMMM, YYYY')
         else if (view === WEEK)
             title = `${current.startOf('week').format('MMM D')} - ${current.endOf('week').format('MMM D, YYYY')}`
         else if (view === MONTH) title = current.format('MMMM, YYYY')
@@ -32,7 +39,8 @@ const Header = () => {
         let newDate = current
         const operation = direction === 'prev' ? 'subtract' : 'add'
 
-        if (view === WEEK) newDate = current[operation](1, 'week')
+        if (view === DAY) newDate = current[operation](1, 'day')
+        else if (view === WEEK) newDate = current[operation](1, 'week')
         else if (view === MONTH) newDate = current[operation](1, 'month')
         else if (view === YEAR) newDate = current[operation](1, 'year')
 

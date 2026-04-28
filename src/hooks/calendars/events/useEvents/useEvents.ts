@@ -4,7 +4,7 @@ import { useQueryState } from 'nuqs'
 import calculateEventsRange from '../../../../utils/eventsRange/calculateEventsRange.ts'
 import dayjs from 'dayjs'
 import { useParams } from 'react-router'
-import {UPCOMING} from "../../../../enums/views/enums.ts";
+import { UPCOMING } from '../../../../enums/views/enums.ts'
 
 const useEvents = () => {
     const { id } = useParams()

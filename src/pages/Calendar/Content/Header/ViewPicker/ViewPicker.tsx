@@ -6,13 +6,24 @@ import DateRangeIcon from '@mui/icons-material/DateRange'
 import ViewButton, { type ViewButtonProps } from './ViewButton/ViewButton.tsx'
 import { type MouseEvent } from 'react'
 import { useQueryState } from 'nuqs'
-import {MONTH, UPCOMING, WEEK, YEAR} from "../../../../../enums/views/enums.ts";
-import type {View} from "../../../../../types/views/types.ts";
+import {
+    DAY,
+    MONTH,
+    UPCOMING,
+    WEEK,
+    YEAR,
+} from '../../../../../enums/views/enums.ts'
+import type { View } from '../../../../../types/views/types.ts'
+import CalendarViewDayIcon from '@mui/icons-material/CalendarViewDay'
 
 const VIEW_BUTTONS: ViewButtonProps[] = [
     {
         value: UPCOMING,
         Icon: ViewListIcon,
+    },
+    {
+        value: DAY,
+        Icon: CalendarViewDayIcon,
     },
     {
         value: WEEK,
