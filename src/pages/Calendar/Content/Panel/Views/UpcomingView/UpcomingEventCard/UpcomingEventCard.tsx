@@ -11,12 +11,14 @@ import {
 import dayjs from 'dayjs'
 import useDrawerStore from '../../../../../../../stores/useDrawerStore/useDrawerStore.ts'
 import EventDetails from '../../../../../../../components/ui/app/EventDetails/EventDetails.tsx'
+import useEventColor from '../../../../../../../hooks/ui/useEventColor/useEventColor.ts'
 
 type Props = {
     event: Event
 }
 
 const UpcomingEventCard = ({ event }: Props) => {
+    const color = useEventColor(event.type)
     const open = useDrawerStore((state) => state.open)
 
     const handleClick = () => {
@@ -32,7 +34,7 @@ const UpcomingEventCard = ({ event }: Props) => {
                 border: '1px solid',
                 borderColor: 'grey.100',
                 borderLeft: '4px solid',
-                borderLeftColor: 'primary.main',
+                borderLeftColor: color,
                 transition: 'all 0.2s ease',
                 '&:hover': {
                     backgroundColor: 'grey.50',
@@ -57,11 +59,7 @@ const UpcomingEventCard = ({ event }: Props) => {
                         alignItems: 'flex-start',
                     }}
                 >
-                    <RoundIcon
-                        Icon={EventIcon}
-                        color={'#7FFFD4'}
-                        iconSize={20}
-                    />
+                    <RoundIcon Icon={EventIcon} color={color} iconSize={20} />
                     <Box>
                         <Typography
                             component={'h5'}
@@ -109,7 +107,7 @@ const UpcomingEventCard = ({ event }: Props) => {
                                                 />
                                                 <Tag
                                                     label={`${from.format('hh:mm A')} - ${to.format('hh:mm A')}`}
-                                                    color={'#7FFF94'}
+                                                    color={color}
                                                 />
                                             </>
                                         )
@@ -133,7 +131,7 @@ const UpcomingEventCard = ({ event }: Props) => {
                                         label={dayjs(event.dateTime).format(
                                             'hh:mm A',
                                         )}
-                                        color={'#7FFF94'}
+                                        color={color}
                                     />
                                 </>
                             )}

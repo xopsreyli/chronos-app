@@ -10,8 +10,8 @@ import {
     Typography,
 } from '@mui/material'
 import { useState, type MouseEvent } from 'react'
-import useUser from '../../../../hooks/users/current/useUser/useUser.ts'
-import useLogout from '../../../../hooks/auth/useLogout/useLogout.ts'
+import useUser from '../../../../hooks/api/users/current/useUser/useUser.ts'
+import useLogout from '../../../../hooks/api/auth/useLogout/useLogout.ts'
 
 const UserMenu = () => {
     const { data: user } = useUser()

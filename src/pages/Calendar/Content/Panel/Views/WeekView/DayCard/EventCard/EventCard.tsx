@@ -3,12 +3,14 @@ import { alpha, Box, Typography } from '@mui/material'
 import type { Event } from '../../../../../../../../types/events/types.ts'
 import useDrawerStore from '../../../../../../../../stores/useDrawerStore/useDrawerStore.ts'
 import EventDetails from '../../../../../../../../components/ui/app/EventDetails/EventDetails.tsx'
+import useEventColor from '../../../../../../../../hooks/ui/useEventColor/useEventColor.ts'
 
 type Props = {
     event: Event
 }
 
 const EventCard = ({ event }: Props) => {
+    const color = useEventColor(event.type)
     const open = useDrawerStore((state) => state.open)
 
     const handleClick = (e: MouseEvent) => {
@@ -20,15 +22,15 @@ const EventCard = ({ event }: Props) => {
         <Box
             onClick={handleClick}
             sx={{
-                backgroundColor: `${alpha('#7FFFD4', 0.1)}`,
+                backgroundColor: `${alpha(color, 0.1)}`,
                 borderLeft: '2px solid',
-                borderColor: '#7FFFD4',
+                borderColor: color,
                 borderRadius: 1,
                 px: 1,
                 py: 0.5,
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                    color: '#7FFFD4',
+                    color: color,
                     transform: 'translateX(4px)',
                 },
             }}

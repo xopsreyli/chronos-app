@@ -1,13 +1,17 @@
-import { Chip, Stack, Typography } from '@mui/material'
+import { alpha, Chip, Stack, Typography } from '@mui/material'
 import type { SvgIconComponent } from '@mui/icons-material'
+import useEventColor from '../../../../../hooks/ui/useEventColor/useEventColor.ts'
+import type { EventType } from '../../../../../types/events/types.ts'
 
 type Props = {
     Icon: SvgIconComponent
-    name: string
-    amount: number
+    eventType: EventType
+    amount?: number
 }
 
-const StatItem = ({ Icon, name, amount }: Props) => {
+const StatItem = ({ Icon, eventType, amount = 0 }: Props) => {
+    const color = useEventColor(eventType)
+
     return (
         <Stack
             direction="row"
@@ -26,6 +30,7 @@ const StatItem = ({ Icon, name, amount }: Props) => {
             >
                 <Icon
                     sx={{
+                        color: color,
                         fontSize: 18,
                     }}
                 />
@@ -35,10 +40,17 @@ const StatItem = ({ Icon, name, amount }: Props) => {
                         textTransform: 'Capitalize',
                     }}
                 >
-                    {name}
+                    {eventType}
                 </Typography>
             </Stack>
-            <Chip label={amount} size="small" />
+            <Chip
+                label={amount}
+                size="small"
+                sx={{
+                    color: color,
+                    backgroundColor: alpha(color, 0.1),
+                }}
+            />
         </Stack>
     )
 }

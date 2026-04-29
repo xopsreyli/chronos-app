@@ -1,4 +1,4 @@
-import useUser from '../../hooks/users/current/useUser/useUser.ts'
+import useUser from '../../hooks/api/users/current/useUser/useUser.ts'
 import Landing from './Landing/Landing.tsx'
 import App from './App/App.tsx'
 import Loader from '../../components/ui/common/Loader/Loader.tsx'

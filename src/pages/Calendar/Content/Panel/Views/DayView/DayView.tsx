@@ -1,4 +1,4 @@
-import useEvents from '../../../../../../hooks/calendars/events/useEvents/useEvents.ts'
+import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
 import { useMemo } from 'react'
 import { Stack, Typography } from '@mui/material'
 import type { Event } from '../../../../../../types/events/types.ts'

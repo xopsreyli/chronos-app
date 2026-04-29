@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from '@mui/material'
 import RoundIcon from '../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
 import EventIcon from '@mui/icons-material/Event'
-import useCalendar from '../../../../hooks/calendars/useCalendar/useCalendar.ts'
+import useCalendar from '../../../../hooks/api/calendars/useCalendar/useCalendar.ts'
 import { useParams } from 'react-router'
 
 const CalendarInfo = () => {

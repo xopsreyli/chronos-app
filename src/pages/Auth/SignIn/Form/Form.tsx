@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import signIn from '../../../../api/auth/signIn/signIn.ts'
 import ErrorMessage from '../../../../components/ui/common/Form/ErrorMessage/ErrorMessage.tsx'
-import useSign from '../../../../hooks/auth/useSign/useSign.ts'
+import useSign from '../../../../hooks/api/auth/useSign/useSign.ts'
 import { signInSchema } from '../../../../schemas/auth/schemas.ts'
 import type { SignInData } from '../../../../types/auth/types.ts'
 

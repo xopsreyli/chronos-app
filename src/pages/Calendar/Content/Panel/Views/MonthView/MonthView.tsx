@@ -3,7 +3,7 @@ import DayCell from './DayCell/DayCell.tsx'
 import { useQueryState } from 'nuqs'
 import dayjs from 'dayjs'
 import { useMemo } from 'react'
-import useEvents from '../../../../../../hooks/calendars/events/useEvents/useEvents.ts'
+import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
 
 const WEEK_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 

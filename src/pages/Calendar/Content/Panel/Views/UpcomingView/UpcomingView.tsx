@@ -1,6 +1,6 @@
 import { Stack, Typography } from '@mui/material'
 import UpcomingEventCard from './UpcomingEventCard/UpcomingEventCard.tsx'
-import useEvents from '../../../../../../hooks/calendars/events/useEvents/useEvents.ts'
+import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
 import type { Event } from '../../../../../../types/events/types.ts'
 import dayjs from 'dayjs'
 import { useMemo } from 'react'

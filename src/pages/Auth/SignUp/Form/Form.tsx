@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import signUp from '../../../../api/auth/signUp/signUp.tsx'
 import ErrorMessage from '../../../../components/ui/common/Form/ErrorMessage/ErrorMessage.tsx'
-import useSign from '../../../../hooks/auth/useSign/useSign.ts'
+import useSign from '../../../../hooks/api/auth/useSign/useSign.ts'
 import { signUpSchema } from '../../../../schemas/auth/schemas.ts'
 import type { SignUpFormData } from '../../../../types/auth/types.ts'
 

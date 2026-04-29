@@ -5,15 +5,17 @@ import dayjs from 'dayjs'
 import getEventIcon from '../../../../utils/getEventIcon/getEventIcon.ts'
 import EditNoteIcon from '@mui/icons-material/EditNote'
 import DeleteIcon from '@mui/icons-material/Delete'
-import useDeleteEvent from '../../../../hooks/events/useDeleteEvent/useDeleteEvent.ts'
+import useDeleteEvent from '../../../../hooks/api/events/useDeleteEvent/useDeleteEvent.ts'
 import useDrawerStore from '../../../../stores/useDrawerStore/useDrawerStore.ts'
 import EventForm from '../EventForm/EventForm.tsx'
+import useEventColor from '../../../../hooks/ui/useEventColor/useEventColor.ts'
 
 type Props = {
     event: Event
 }
 
 const EventDetails = ({ event }: Props) => {
+    const color = useEventColor(event.type)
     const { mutate } = useDeleteEvent(event)
     const setContent = useDrawerStore((state) => state.setContent)
     const close = useDrawerStore((state) => state.close)
@@ -57,7 +59,7 @@ const EventDetails = ({ event }: Props) => {
                     mb: 1,
                 }}
             >
-                <Icon sx={{ color: '#7FFFD4' }} />
+                <Icon sx={{ color: color }} />
                 <Typography variant={'h5'}>{event.title}</Typography>
             </Stack>
             <Typography
@@ -73,7 +75,7 @@ const EventDetails = ({ event }: Props) => {
                 variant={'body1'}
                 sx={{
                     borderTop: '4px solid',
-                    borderTopColor: '#7FFFD4',
+                    borderTopColor: color,
                     pt: 2,
                     mb: 2,
                 }}
