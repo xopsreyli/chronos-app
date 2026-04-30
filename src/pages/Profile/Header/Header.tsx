@@ -15,8 +15,6 @@ const Header = () => {
     const { data: user } = useUser()
     const { data: calendars } = useCalendars()
 
-    console.log(calendars)
-
     return (
         <Box
             sx={(theme) => ({
