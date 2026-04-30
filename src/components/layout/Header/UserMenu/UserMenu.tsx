@@ -1,6 +1,5 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import LogoutIcon from '@mui/icons-material/Logout'
-import SettingsIcon from '@mui/icons-material/Settings'
 import {
     Avatar,
     IconButton,
@@ -12,6 +11,7 @@ import {
 import { useState, type MouseEvent } from 'react'
 import useUser from '../../../../hooks/api/users/current/useUser/useUser.ts'
 import useLogout from '../../../../hooks/api/auth/useLogout/useLogout.ts'
+import { Link } from 'react-router'
 
 const UserMenu = () => {
     const { data: user } = useUser()
@@ -80,7 +80,11 @@ const UserMenu = () => {
                 >
                     {user.nickname}
                 </Typography>
-                <MenuItem onClick={handleClose}>
+                <MenuItem
+                    onClick={handleClose}
+                    component={Link}
+                    to={'/profile'}
+                >
                     <ListItemIcon>
                         <AccountCircleIcon
                             fontSize="small"
@@ -88,15 +92,6 @@ const UserMenu = () => {
                         />
                     </ListItemIcon>
                     Profile
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
-                    <ListItemIcon>
-                        <SettingsIcon
-                            fontSize="small"
-                            sx={{ color: 'text.primary' }}
-                        />
-                    </ListItemIcon>
-                    Settings
                 </MenuItem>
                 <MenuItem
                     onClick={handleLogout}

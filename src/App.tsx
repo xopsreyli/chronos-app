@@ -6,6 +6,7 @@ import SignUp from './pages/Auth/SignUp/SignUp.tsx'
 import Root from './components/layout/Root/Root.tsx'
 import AuthLayout from './components/layout/Auth/AuthLayout.tsx'
 import Calendar from './pages/Calendar/Calendar.tsx'
+import Profile from './pages/Profile/Profile.tsx'
 
 function App() {
     return (
@@ -20,6 +21,7 @@ function App() {
                     <Route path={'calendars'}>
                         <Route path={':id'} element={<Calendar />} />
                     </Route>
+                    <Route path={'/profile'} element={<Profile />} />
                 </Route>
             </Route>
         </Routes>
