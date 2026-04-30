@@ -1,10 +1,14 @@
 import { Box } from '@mui/material'
+import type { EventType } from '../../../../../../../../types/events/types.ts'
+import useEventColor from '../../../../../../../../hooks/ui/useEventColor/useEventColor.ts'
 
 type Props = {
-    color: string
+    type: EventType
 }
 
-const EventIndicator = ({ color }: Props) => {
+const EventIndicator = ({ type }: Props) => {
+    const color = useEventColor(type)
+
     return (
         <Box
             component={'span'}

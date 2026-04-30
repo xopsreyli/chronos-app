@@ -3,6 +3,11 @@ import EventIndicator from './EventIndicator/EventIndicator.tsx'
 import { useQueryState } from 'nuqs'
 import dayjs from 'dayjs'
 import { DAY } from '../../../../../../../enums/views/enums.ts'
+import {
+    ARRANGEMENT,
+    REMINDER,
+    TASK,
+} from '../../../../../../../enums/events/enums.ts'
 
 type Props = {
     day: number
@@ -62,9 +67,9 @@ const DayCell = ({ day, isArrangement, isReminder, isTask }: Props) => {
                     bottom: 8,
                 }}
             >
-                {isArrangement && <EventIndicator color={'#7FFFD4'} />}
-                {isReminder && <EventIndicator color={'#7FFFD4'} />}
-                {isTask && <EventIndicator color={'#7FFFD4'} />}
+                {isArrangement && <EventIndicator type={ARRANGEMENT} />}
+                {isReminder && <EventIndicator type={REMINDER} />}
+                {isTask && <EventIndicator type={TASK} />}
             </Stack>
         </Box>
     )
