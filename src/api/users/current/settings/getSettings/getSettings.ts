@@ -1,4 +1,4 @@
-import type { Settings } from '../../../../types/settings/types.ts'
+import type { Settings } from '../../../../../types/settings/types.ts'
 
 const getSettings = async (): Promise<Settings> => {
     const response = await fetch(

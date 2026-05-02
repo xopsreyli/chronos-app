@@ -4,7 +4,7 @@ import AppDialog from '../../ui/app/AppDialog/AppDialog.tsx'
 import useUser from '../../../hooks/api/users/current/useUser/useUser.ts'
 import { useEffect } from 'react'
 import AppDrawer from '../../ui/app/AppDrawer/AppDrawer.tsx'
-import useSettings from '../../../hooks/api/users/current/useSettings/useSettings.ts'
+import useSettings from '../../../hooks/api/users/current/settings/useSettings/useSettings.ts'
 
 const AppLayout = () => {
     const navigate = useNavigate()

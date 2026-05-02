@@ -1,9 +1,10 @@
-import { List, Paper } from '@mui/material'
+import { Divider, List, Paper } from '@mui/material'
 import type { ProfileSection } from '../../../../types/profileSections/types.ts'
 import type { SvgIconComponent } from '@mui/icons-material'
 import { SETTINGS } from '../../../../enums/profileSections/profileSections.ts'
 import SettingsIcon from '@mui/icons-material/Settings'
 import Item from './Item/Item.tsx'
+import { Fragment } from 'react'
 
 const ITEMS: { section: ProfileSection; Icon: SvgIconComponent }[] = [
     {
@@ -20,8 +21,11 @@ const Menu = () => {
             }}
         >
             <List>
-                {ITEMS.map((item) => (
-                    <Item profileSection={item.section} Icon={item.Icon} />
+                {ITEMS.map((item, i) => (
+                    <Fragment key={item.section}>
+                        <Item profileSection={item.section} Icon={item.Icon} />
+                        {i < ITEMS.length - 1 && <Divider />}
+                    </Fragment>
                 ))}
             </List>
         </Paper>

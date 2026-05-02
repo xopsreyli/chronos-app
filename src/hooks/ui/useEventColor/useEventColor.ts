@@ -1,4 +1,4 @@
-import useSettings from '../../api/users/current/useSettings/useSettings.ts'
+import useSettings from '../../api/users/current/settings/useSettings/useSettings.ts'
 import type { EventType } from '../../../types/events/types.ts'
 import { ARRANGEMENT, REMINDER, TASK } from '../../../enums/events/enums.ts'
 import {
