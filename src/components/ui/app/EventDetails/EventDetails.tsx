@@ -93,9 +93,9 @@ const EventDetails = ({ event }: Props) => {
                 <IconButton
                     onClick={handleUpdateClick}
                     size={'large'}
-                    sx={(theme) => ({
-                        color: theme.palette.text.primary,
-                    })}
+                    sx={{
+                        color: 'text.primary',
+                    }}
                 >
                     <EditNoteIcon />
                 </IconButton>
