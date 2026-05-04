@@ -30,7 +30,7 @@ const Appearance = () => {
     return (
         <Box>
             <Title title="appearance" />
-            <Subtitle subtitle="Choose your preferred theme for the application" />
+            <Subtitle subtitle="Choose your preferred lightTheme for the application" />
             <Controller
                 name={'theme'}
                 control={control}
