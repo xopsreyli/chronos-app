@@ -18,7 +18,6 @@ const AuthButtons = () => {
                 to="/signup"
                 component={Link}
                 variant="contained"
-                color="primary"
                 sx={{
                     textTransform: 'capitalize',
                 }}

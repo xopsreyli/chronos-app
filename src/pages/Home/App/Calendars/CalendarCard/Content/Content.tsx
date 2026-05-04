@@ -18,6 +18,10 @@ const Content = ({ name, description }: Props) => {
             <Typography
                 variant="h6"
                 sx={{
+                    display: '-webkit-box',
+                    WebkitBoxOrient: 'vertical',
+                    WebkitLineClamp: 2,
+                    overflow: 'hidden',
                     mb: 0.5,
                 }}
             >

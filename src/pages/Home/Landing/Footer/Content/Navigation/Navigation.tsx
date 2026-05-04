@@ -25,7 +25,7 @@ const Navigation = () => {
                         component="h6"
                         sx={{
                             textTransform: 'capitalize',
-                            color: '#fff',
+                            color: 'background.paper',
                             fontWeight: 'bold',
                         }}
                     >

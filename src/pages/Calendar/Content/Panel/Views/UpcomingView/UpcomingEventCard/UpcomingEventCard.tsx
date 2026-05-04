@@ -64,6 +64,10 @@ const UpcomingEventCard = ({ event }: Props) => {
                         <Typography
                             component={'h5'}
                             sx={{
+                                display: '-webkit-box',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 1,
+                                overflow: 'hidden',
                                 fontWeight: '600',
                             }}
                         >

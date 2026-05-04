@@ -40,11 +40,11 @@ const DayCell = ({ day, isArrangement, isReminder, isTask }: Props) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: isCurrentDay ? '#7FFFD4' : 'grey.50',
+                backgroundColor: isCurrentDay ? 'primary.main' : 'grey.50',
                 borderRadius: 2,
                 transition: 'all 0.2s ease',
                 '&:hover': {
-                    backgroundColor: isCurrentDay ? '#4dd9a8' : 'grey.100',
+                    backgroundColor: isCurrentDay ? 'primary.dark' : 'grey.100',
                 },
             }}
         >
@@ -52,7 +52,7 @@ const DayCell = ({ day, isArrangement, isReminder, isTask }: Props) => {
                 component={'span'}
                 variant={'body2'}
                 sx={{
-                    color: isCurrentDay ? '#fff' : 'inherit',
+                    color: isCurrentDay ? 'background.paper' : 'text.primary',
                     fontWeight: isCurrentDay ? 'bold' : 'normal',
                 }}
             >

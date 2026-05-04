@@ -7,7 +7,7 @@ type Props = {
 
 const ErrorMessage = ({ message, sx }: Props) => {
     return (
-        <Typography variant={'body2'} color={'error.main'} sx={sx}>
+        <Typography variant={'body2'} color={'error'} sx={sx}>
             {message}
         </Typography>
     )

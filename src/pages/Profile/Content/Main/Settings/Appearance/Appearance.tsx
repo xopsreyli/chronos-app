@@ -58,12 +58,12 @@ const Appearance = () => {
                                     border: '2px solid',
                                     borderColor:
                                         watchTheme === appearance.value
-                                            ? '#7FFFD4'
-                                            : '#f1f5f9',
+                                            ? 'primary.main'
+                                            : 'grey.100',
                                     p: 3,
                                     transition: 'all 0.2s',
                                     '&:hover': {
-                                        borderColor: '#7FFFD4',
+                                        borderColor: 'primary.main',
                                     },
                                 }}
                             >

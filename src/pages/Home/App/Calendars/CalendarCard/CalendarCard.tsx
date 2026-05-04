@@ -3,19 +3,28 @@ import Header from './Header/Header.tsx'
 import Content from './Content/Content.tsx'
 import { Link } from 'react-router'
 import type { Calendar } from '../../../../../types/calendar/types.ts'
+import { DARK } from '../../../../../enums/theme/enums.ts'
 
 const CalendarCard = (calendar: Calendar) => {
     const { id, name, description, color } = calendar
 
     return (
         <Card
-            sx={{
-                transition: 'all 0.2s ease-in-out',
-                '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
+            sx={[
+                {
+                    transition: 'all 0.2s ease-in-out',
+                    '&:hover': {
+                        transform: 'translateY(-4px)',
+                        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.1)',
+                    },
                 },
-            }}
+                (theme) =>
+                    theme.applyStyles(DARK, {
+                        '&:hover': {
+                            boxShadow: '0 8px 24px rgba(255, 255, 255, 0.1)',
+                        },
+                    }),
+            ]}
         >
             <CardActionArea to={`/calendars/${id}`} component={Link}>
                 <Box

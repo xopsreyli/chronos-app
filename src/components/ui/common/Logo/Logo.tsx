@@ -10,7 +10,6 @@ type IconProps = {
 type Props = {
     icon?: IconProps
     nameSize?: number
-    themeMode?: 'light' | 'dark'
 }
 
 const Logo = ({
@@ -19,10 +18,7 @@ const Logo = ({
         size: 32,
     },
     nameSize = 18,
-    themeMode = 'light',
 }: Props) => {
-    const isDark: boolean = themeMode === 'dark'
-
     return (
         <Link to={'/'} component={RRLink} underline="none">
             <Stack
@@ -41,7 +37,7 @@ const Logo = ({
                 />
                 <Typography
                     sx={{
-                        color: isDark ? '#fff' : 'text.primary',
+                        color: 'text.primary',
                         fontSize: nameSize,
                         fontWeight: 'bold',
                         textTransform: 'capitalize',

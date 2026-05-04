@@ -115,13 +115,13 @@ const CalendarForm = ({ calendar }: Props) => {
                 <Button
                     onClick={close}
                     size={'large'}
-                    color={'inherit'}
-                    sx={{
+                    sx={(theme) => ({
                         textTransform: 'capitalize',
+                        color: 'text.primary',
                         '&:hover': {
-                            backgroundColor: `${alpha('#1e293b', 0.05)}`,
+                            backgroundColor: `${alpha(theme.palette.text.primary, 0.05)}`,
                         },
-                    }}
+                    })}
                 >
                     cancel
                 </Button>

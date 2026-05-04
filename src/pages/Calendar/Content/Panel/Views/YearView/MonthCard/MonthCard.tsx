@@ -27,24 +27,24 @@ const MonthCard = ({ monthIndex, numberOfEvents }: Props) => {
         <Card
             onClick={handleClick}
             elevation={0}
-            sx={{
+            sx={(theme) => ({
                 cursor: 'pointer',
                 border: '1px solid',
-                borderColor: isCurrentMonth ? '#7FFFD4' : 'grey.100',
+                borderColor: isCurrentMonth ? 'primary.main' : 'grey.100',
                 backgroundColor: isCurrentMonth
-                    ? alpha('#7FFF94', 0.1)
-                    : '#ffffff',
+                    ? alpha(theme.palette.secondary.main, 0.1)
+                    : 'background.paper',
                 transition: 'all 0.2s ease',
                 '&:hover': {
                     borderColor: 'primary.light',
                     transform: 'scale(1.02)',
                 },
-            }}
+            })}
         >
             <CardContent>
                 <Typography
                     sx={{
-                        color: isCurrentMonth ? '#7FFFD4' : 'inherit',
+                        color: isCurrentMonth ? 'primary.main' : 'text.primary',
                         fontWeight: 500,
                         mb: 2,
                     }}

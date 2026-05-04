@@ -22,10 +22,7 @@ const Item = ({ profileSection, Icon }: Props) => {
             onClick={handleClick}
             sx={{
                 '&.Mui-selected': {
-                    color: '#7FFFD4',
-                    '& .MuiListItemIcon-root': {
-                        color: '#7FFFD4',
-                    },
+                    color: 'primary.main',
                 },
             }}
         >

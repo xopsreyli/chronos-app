@@ -14,7 +14,7 @@ const Header = () => {
                 mb: 1,
             }}
         >
-            <IconButton onClick={close} color="inherit">
+            <IconButton onClick={close} sx={{ color: 'text.primary' }}>
                 <CloseIcon />
             </IconButton>
         </Box>

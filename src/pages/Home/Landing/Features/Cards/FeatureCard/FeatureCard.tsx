@@ -19,7 +19,7 @@ const FeatureCard = ({
 }: FeatureCardProps) => {
     return (
         <Card
-            sx={{
+            sx={(theme) => ({
                 border: '1px solid',
                 borderColor: 'grey.100',
                 p: 3,
@@ -28,9 +28,9 @@ const FeatureCard = ({
                     border: '1px solid',
                     borderColor: 'primary.main',
                     transform: 'translateY(-4px)',
-                    boxShadow: '0 12px 32px rgba(16, 185, 129, 0.1)',
+                    boxShadow: `0 12px 32px ${alpha(theme.palette.primary.main, 0.1)}`,
                 },
-            }}
+            })}
         >
             <Stack
                 direction="row"

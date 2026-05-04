@@ -1,6 +1,9 @@
 import { alpha, createTheme, type Theme } from '@mui/material'
 
 const theme = createTheme({
+    cssVariables: {
+        colorSchemeSelector: 'data-mui-color-scheme',
+    },
     colorSchemes: {
         light: {
             palette: {

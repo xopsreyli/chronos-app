@@ -10,6 +10,7 @@ import {
 import useUser from '../../../hooks/api/users/current/useUser/useUser.ts'
 import useCalendars from '../../../hooks/api/calendars/useCalendars/useCalendars.ts'
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'
+import { DARK } from '../../../enums/theme/enums.ts'
 
 const Header = () => {
     const { data: user } = useUser()
@@ -34,9 +35,9 @@ const Header = () => {
                         width: 100,
                         height: 100,
                         border: '4px solid',
-                        borderColor: '#fff',
-                        backgroundColor: alpha('#fff', 0.9),
-                        color: '#1a3a2f',
+                        borderColor: 'background.paper',
+                        backgroundColor: `color-mix(in srgb, var(--mui-palette-background-paper) 90%, transparent)`,
+                        color: 'text.primary',
                         fontSize: '2.5rem',
                         boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15)',
                     }}
@@ -47,14 +48,14 @@ const Header = () => {
                     <Typography
                         variant={'h4'}
                         sx={{
-                            color: '#1a3a2f',
+                            color: 'primary.contrastText',
                         }}
                     >
                         {user?.nickname}
                     </Typography>
                     <Typography
                         sx={{
-                            color: '#1a3a1f',
+                            color: 'secondary.contrastText',
                             mb: 1.5,
                         }}
                     >
@@ -70,12 +71,25 @@ const Header = () => {
                     >
                         <Chip
                             label={`${calendars?.length} Calendars`}
-                            icon={<CalendarMonthIcon />}
+                            icon={<CalendarMonthIcon color={'inherit'} />}
                             size={'small'}
-                            sx={{
-                                backgroundColor: alpha('#fff', 0.8),
-                                color: '#1a3a2f',
-                            }}
+                            sx={[
+                                (theme) => ({
+                                    backgroundColor: alpha(
+                                        theme.palette.background.paper,
+                                        0.8,
+                                    ),
+                                    color: 'primary.contrastText',
+                                }),
+                                (theme) =>
+                                    theme.applyStyles(DARK, {
+                                        backgroundColor: alpha(
+                                            theme.palette.primary.contrastText,
+                                            0.8,
+                                        ),
+                                        color: 'text.primary',
+                                    }),
+                            ]}
                         />
                     </Stack>
                 </Box>

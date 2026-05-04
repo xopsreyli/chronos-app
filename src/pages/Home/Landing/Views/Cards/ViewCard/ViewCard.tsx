@@ -1,4 +1,4 @@
-import { Card, Typography } from '@mui/material'
+import { Card, Typography, useTheme } from '@mui/material'
 import RoundIcon from '../../../../../../components/ui/common/RoundIcon/RoundIcon.tsx'
 import type { SvgIconComponent } from '@mui/icons-material'
 
@@ -8,6 +8,8 @@ export type ViewCardProps = {
 }
 
 const ViewCard = ({ Icon, title }: ViewCardProps) => {
+    const theme = useTheme()
+
     return (
         <Card
             elevation={0}
@@ -27,7 +29,11 @@ const ViewCard = ({ Icon, title }: ViewCardProps) => {
                 },
             }}
         >
-            <RoundIcon Icon={Icon} color="#7FFFD4" iconSize={32} />
+            <RoundIcon
+                Icon={Icon}
+                color={theme.palette.primary.main}
+                iconSize={32}
+            />
             <Typography
                 sx={{
                     fontWeight: 600,

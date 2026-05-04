@@ -40,7 +40,6 @@ const Content = () => {
                     to="/signup"
                     component={Link}
                     variant="contained"
-                    color="primary"
                     size="large"
                     endIcon={<ArrowForwardIcon />}
                     sx={{

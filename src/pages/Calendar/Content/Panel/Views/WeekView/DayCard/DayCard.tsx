@@ -29,20 +29,22 @@ const DayCard = ({ day, events }: Props) => {
         <Card
             onClick={handleClick}
             elevation={0}
-            sx={{
+            sx={(theme) => ({
                 cursor: 'pointer',
                 aspectRatio: 1,
                 overflow: 'visible',
                 flex: 1,
                 border: '1px solid',
-                borderColor: isCurrentDay ? '#7FFFD4' : 'grey.100',
-                backgroundColor: isCurrentDay ? alpha('#7FFF94', 0.1) : '#fff',
+                borderColor: isCurrentDay ? 'primary.main' : 'grey.100',
+                backgroundColor: isCurrentDay
+                    ? alpha(theme.palette.secondary.main, 0.1)
+                    : 'background.paper',
                 transition: 'all 0.2s ease',
                 '&:hover': {
                     borderColor: 'primary.light',
                     transform: 'scale(1.02)',
                 },
-            }}
+            })}
         >
             <CardContent
                 sx={{
@@ -54,7 +56,7 @@ const DayCard = ({ day, events }: Props) => {
             >
                 <Typography
                     sx={{
-                        color: isCurrentDay ? '#7FFFD4' : '#64748b',
+                        color: isCurrentDay ? 'primary.main' : 'text.secondary',
                         fontSize: 12,
                         fontWeight: 600,
                         letterSpacing: '0.05em',
@@ -66,7 +68,7 @@ const DayCard = ({ day, events }: Props) => {
                 <Typography
                     variant="subtitle2"
                     sx={{
-                        color: isCurrentDay ? '#7FFFD4' : 'inherit',
+                        color: isCurrentDay ? 'primary.main' : 'text.primary',
                         mb: 1,
                     }}
                 >

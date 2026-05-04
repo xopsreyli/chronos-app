@@ -60,11 +60,11 @@ const ViewPicker = () => {
             size="small"
             exclusive
             onChange={handleViewChange}
-            sx={{
+            sx={(theme) => ({
                 '& .Mui-selected': {
-                    backgroundColor: `${alpha('#7FFF94', 0.1)}`,
+                    backgroundColor: `${alpha(theme.palette.secondary.main, 0.1)}`,
                 },
-            }}
+            })}
         >
             {VIEW_BUTTONS.map((viewButton) => (
                 <ViewButton key={viewButton.value} {...viewButton} />
