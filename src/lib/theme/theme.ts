@@ -165,10 +165,13 @@ const theme = createTheme({
                 },
                 text: ({ theme }: { theme: Theme }) => ({
                     '&:hover': {
-                        backgroundColor: alpha(theme.palette.secondary.main, 0.1),
+                        backgroundColor: alpha(
+                            theme.palette.secondary.main,
+                            0.1,
+                        ),
                     },
                 }),
-                contained: ({theme}: {theme: Theme}) => ({
+                contained: ({ theme }: { theme: Theme }) => ({
                     boxShadow: 'none',
                     '&:hover': {
                         boxShadow: `0 4px 12px ${alpha(theme.palette.primary.main, 0.4)}`,
@@ -183,7 +186,7 @@ const theme = createTheme({
                     boxShadow: '0 2px 12px rgba(0, 0, 0, 0.06)',
                     ...theme.applyStyles('dark', {
                         boxShadow: '0 2px 12px rgba(255, 255, 255, 0.06)',
-                    })
+                    }),
                 }),
             },
         },
@@ -203,7 +206,7 @@ const theme = createTheme({
                     backgroundColor: theme.palette.background.paper,
                     ...theme.applyStyles('dark', {
                         boxShadow: '0 0 8px rgba(255, 255, 255, 0.2)',
-                    })
+                    }),
                 }),
             },
         },

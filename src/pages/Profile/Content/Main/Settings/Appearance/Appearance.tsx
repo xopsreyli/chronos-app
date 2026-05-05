@@ -1,6 +1,13 @@
 import Title from '../../../../../../components/ui/app/Profile/Content/Main/Title/Title'
 import Subtitle from '../../../../../../components/ui/app/Profile/Content/Main/Subtitle/Subtitle.tsx'
-import { Box, Paper, Radio, RadioGroup, Typography } from '@mui/material'
+import {
+    Box,
+    Paper,
+    Radio,
+    RadioGroup,
+    Typography,
+    useMediaQuery,
+} from '@mui/material'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
@@ -26,6 +33,8 @@ const APPEARANCES = [
 const Appearance = () => {
     const { control, watch } = useFormContext<SettingsFormData>()
     const watchTheme = watch('theme')
+    const prefersDark = useMediaQuery('(prefers-color-scheme: dark)')
+    const systemPreference = prefersDark ? DARK : LIGHT
 
     return (
         <Box>
@@ -73,7 +82,26 @@ const Appearance = () => {
                                         display: 'none',
                                     }}
                                 />
-                                {appearance.icon}
+                                <Box
+                                    data-mui-color-scheme={
+                                        appearance.value === SYSTEM
+                                            ? systemPreference
+                                            : appearance.value
+                                    }
+                                    sx={{
+                                        width: 48,
+                                        height: 48,
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        backgroundColor: 'background.paper',
+                                        border: '1px solid',
+                                        borderColor: 'grey.300',
+                                        borderRadius: 1,
+                                    }}
+                                >
+                                    {appearance.icon}
+                                </Box>
                                 <Typography
                                     sx={{
                                         textTransform: 'capitalize',
