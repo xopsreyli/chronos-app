@@ -9,11 +9,12 @@ import {
 type Props = {
     Icon: SvgIconComponent
     text: string
+    onClick: () => void
 }
 
-const MenuButton = ({ Icon, text }: Props) => {
+const MenuButton = ({ Icon, text, onClick }: Props) => {
     return (
-        <ListItem disablePadding>
+        <ListItem onClick={onClick} disablePadding>
             <ListItemButton
                 sx={{
                     gap: 2,

@@ -1,15 +1,15 @@
 import { Grid } from '@mui/material'
 import MonthCard from './MonthCard/MonthCard.tsx'
-import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
 import { useMemo } from 'react'
 import dayjs from 'dayjs'
 import { useQueryState } from 'nuqs'
+import useFilteredEvents from '../../../../../../hooks/ui/useFilteredEvents/useFilteredEvents.ts'
 
 const YearView = () => {
     const [date] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
-    const { data: events } = useEvents()
+    const { data: events } = useFilteredEvents()
     const current = dayjs(date)
 
     const eventsPerMonth: number[] = useMemo(() => {

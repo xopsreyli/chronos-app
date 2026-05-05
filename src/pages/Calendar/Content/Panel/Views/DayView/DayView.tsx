@@ -1,10 +1,10 @@
-import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
 import { useMemo } from 'react'
 import { Stack, Typography } from '@mui/material'
 import type { Event } from '../../../../../../types/events/types.ts'
 import { ARRANGEMENT } from '../../../../../../enums/events/enums.ts'
 import dayjs from 'dayjs'
 import UpcomingEventCard from '../UpcomingView/UpcomingEventCard/UpcomingEventCard.tsx'
+import useFilteredEvents from '../../../../../../hooks/ui/useFilteredEvents/useFilteredEvents.ts'
 
 const getEventDate = (event: Event) => {
     if (event.type === ARRANGEMENT) return dayjs(event.from)
@@ -12,7 +12,7 @@ const getEventDate = (event: Event) => {
 }
 
 const DayView = () => {
-    const { data: events } = useEvents()
+    const { data: events } = useFilteredEvents()
 
     const sortedEvents = useMemo(() => {
         if (!events) return []

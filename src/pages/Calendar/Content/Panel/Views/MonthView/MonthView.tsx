@@ -3,7 +3,7 @@ import DayCell from './DayCell/DayCell.tsx'
 import { useQueryState } from 'nuqs'
 import dayjs from 'dayjs'
 import { useMemo } from 'react'
-import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
+import useFilteredEvents from '../../../../../../hooks/ui/useFilteredEvents/useFilteredEvents.ts'
 
 const WEEK_DAYS: string[] = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
 
@@ -11,7 +11,7 @@ const MonthView = () => {
     const [date] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
-    const { data: events } = useEvents()
+    const { data: events } = useFilteredEvents()
     const current = dayjs(date)
 
     const daysInMonth: number = current.daysInMonth()

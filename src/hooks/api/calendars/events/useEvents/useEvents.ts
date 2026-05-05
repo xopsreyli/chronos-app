@@ -5,6 +5,7 @@ import calculateEventsRange from '../../../../../utils/eventsRange/calculateEven
 import dayjs from 'dayjs'
 import { useParams } from 'react-router'
 import { UPCOMING } from '../../../../../enums/views/enums.ts'
+import type { View } from '../../../../../types/views/types.ts'
 
 const useEvents = () => {
     const { id } = useParams()
@@ -15,7 +16,7 @@ const useEvents = () => {
     const [date] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
-    const [from, to] = calculateEventsRange(view, date)
+    const [from, to] = calculateEventsRange(view as View, date)
 
     return useQuery({
         queryKey: ['events', calendarId, view, date],

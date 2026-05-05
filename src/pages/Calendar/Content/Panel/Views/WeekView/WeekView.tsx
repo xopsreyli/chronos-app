@@ -1,16 +1,16 @@
 import { Stack } from '@mui/material'
 import DayCard from './DayCard/DayCard.tsx'
-import useEvents from '../../../../../../hooks/api/calendars/events/useEvents/useEvents.ts'
 import { useMemo } from 'react'
 import dayjs from 'dayjs'
 import type { Event } from '../../../../../../types/events/types.ts'
 import { useQueryState } from 'nuqs'
+import useFilteredEvents from '../../../../../../hooks/ui/useFilteredEvents/useFilteredEvents.ts'
 
 const WeekView = () => {
     const [date] = useQueryState('date', {
         defaultValue: dayjs().format('YYYY-MM-DD'),
     })
-    const { data: events } = useEvents()
+    const { data: events } = useFilteredEvents()
     const current = dayjs(date)
 
     const days = useMemo(() => {
