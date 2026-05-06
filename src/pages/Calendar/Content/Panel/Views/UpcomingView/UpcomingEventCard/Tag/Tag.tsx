@@ -1,17 +1,17 @@
-import { alpha, Chip } from '@mui/material'
+import { Chip } from '@mui/material'
 
 type Props = {
     label: string
     color?: string
 }
 
-const Tag = ({ label, color = '#64748b' }: Props) => {
+const Tag = ({ label, color = 'text.secondary' }: Props) => {
     return (
         <Chip
             label={label}
             size={'small'}
             sx={{
-                backgroundColor: `${alpha(color, 0.1)}`,
+                backgroundColor: `color-mix(in srgb, ${color} 10%, transparent)`,
                 color: color,
                 fontSize: 12,
             }}
