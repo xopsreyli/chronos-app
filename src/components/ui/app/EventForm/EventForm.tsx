@@ -2,6 +2,7 @@ import {
     Box,
     Button,
     FormControl,
+    IconButton,
     InputLabel,
     MenuItem,
     Select,
@@ -27,6 +28,7 @@ import dayjs from 'dayjs'
 import useUpdateEvent from '../../../../hooks/api/events/useUpdateEvent/useUpdateEvent.ts'
 import EventDetails from '../EventDetails/EventDetails.tsx'
 import ErrorMessage from '../../common/Form/ErrorMessage/ErrorMessage.tsx'
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 type Props = {
     event?: Event
@@ -124,6 +126,10 @@ const EventForm = ({ event }: Props) => {
                 },
             })
         }
+    }
+
+    const handleBackClick = () => {
+        setContent(<EventDetails event={event!} />)
     }
 
     const renderWhenFields = () => {
@@ -241,14 +247,31 @@ const EventForm = ({ event }: Props) => {
                 flex: 1,
             }}
         >
-            <Typography
-                variant="h5"
+            <Stack
+                direction="row"
+                spacing={1}
+                useFlexGap
                 sx={{
+                    alignItems: 'center',
                     mb: 2,
                 }}
             >
-                {event ? 'Update event' : 'Create new event'}
-            </Typography>
+                {event && (
+                    <IconButton
+                        onClick={handleBackClick}
+                        sx={{
+                            alignSelf: 'flex-start'
+                        }}
+                    >
+                        <ArrowBackIcon />
+                    </IconButton>
+                )}
+                <Typography
+                    variant="h5"
+                >
+                    {event ? 'Update event' : 'Create new event'}
+                </Typography>
+            </Stack>
             <Stack
                 spacing={1}
                 useFlexGap
