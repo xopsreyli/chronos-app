@@ -5,14 +5,24 @@ import type { SvgIconComponent } from '@mui/icons-material'
 
 type Props = {
     profileSection: ProfileSection
+    text: string
     Icon: SvgIconComponent
+    backgroundOnSelect?: boolean
+    onClick?: () => void
 }
 
-const Item = ({ profileSection, Icon }: Props) => {
+const Item = ({
+    profileSection,
+    text,
+    Icon,
+    backgroundOnSelect = true,
+    onClick,
+}: Props) => {
     const section = useProfileSection((state) => state.section)
     const setSection = useProfileSection((state) => state.setSection)
 
     const handleClick = () => {
+        onClick?.()
         setSection(profileSection)
     }
 
@@ -22,6 +32,9 @@ const Item = ({ profileSection, Icon }: Props) => {
             onClick={handleClick}
             sx={{
                 '&.Mui-selected': {
+                    ...(!backgroundOnSelect && {
+                        backgroundColor: 'transparent',
+                    }),
                     color: 'primary.main',
                 },
             }}
@@ -35,7 +48,7 @@ const Item = ({ profileSection, Icon }: Props) => {
                 <Icon />
             </ListItemIcon>
             <ListItemText
-                primary={profileSection}
+                primary={text}
                 sx={{
                     textTransform: 'capitalize',
                 }}

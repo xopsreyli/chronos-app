@@ -28,7 +28,7 @@ import dayjs from 'dayjs'
 import useUpdateEvent from '../../../../hooks/api/events/useUpdateEvent/useUpdateEvent.ts'
 import EventDetails from '../EventDetails/EventDetails.tsx'
 import ErrorMessage from '../../common/Form/ErrorMessage/ErrorMessage.tsx'
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
 type Props = {
     event?: Event
@@ -260,15 +260,13 @@ const EventForm = ({ event }: Props) => {
                     <IconButton
                         onClick={handleBackClick}
                         sx={{
-                            alignSelf: 'flex-start'
+                            alignSelf: 'flex-start',
                         }}
                     >
                         <ArrowBackIcon />
                     </IconButton>
                 )}
-                <Typography
-                    variant="h5"
-                >
+                <Typography variant="h5">
                     {event ? 'Update event' : 'Create new event'}
                 </Typography>
             </Stack>
