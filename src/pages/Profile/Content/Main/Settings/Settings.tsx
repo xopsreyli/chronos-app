@@ -1,7 +1,6 @@
-import { Stack, Box, Divider } from '@mui/material'
+import { Stack, Divider } from '@mui/material'
 import Appearance from './Appearance/Appearance.tsx'
 import EventColors from './EventColors/EventColors.tsx'
-import SaveButton from './SaveButton/SaveButton.tsx'
 import { FormProvider, useForm } from 'react-hook-form'
 import useUpdateSettings from '../../../../../hooks/api/users/current/settings/useUpdateSettings/useUpdateSettings.ts'
 import type {
@@ -13,6 +12,7 @@ import useSettings from '../../../../../hooks/api/users/current/settings/useSett
 import { zodResolver } from '@hookform/resolvers/zod'
 import { settingsSchema } from '../../../../../schemas/settings/schemas.ts'
 import { useEffect } from 'react'
+import SaveButton from '../../../../../components/ui/app/Profile/Content/Main/SaveButton/SaveButton.tsx'
 
 const Settings = () => {
     const { data: settings } = useSettings()
@@ -30,7 +30,7 @@ const Settings = () => {
     const {
         reset,
         handleSubmit,
-        formState: { dirtyFields },
+        formState: { dirtyFields, isDirty },
     } = methods
     const { mutate } = useUpdateSettings()
 
@@ -72,14 +72,7 @@ const Settings = () => {
                 <Appearance />
                 <Divider />
                 <EventColors />
-                <Box
-                    sx={{
-                        display: 'flex',
-                        justifyContent: 'flex-end',
-                    }}
-                >
-                    <SaveButton />
-                </Box>
+                <SaveButton text={'save settings'} disabled={isDirty} />
             </Stack>
         </FormProvider>
     )

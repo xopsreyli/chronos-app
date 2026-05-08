@@ -39,6 +39,7 @@ const Account = () => {
                 Icon={ManageAccountsIcon}
                 onClick={handleClick}
             />
+            <Divider />
             <Collapse
                 in={isOpen}
                 timeout="auto"
@@ -47,7 +48,6 @@ const Account = () => {
                     pl: 4,
                 }}
             >
-                <Divider />
                 <Nickname />
                 <Divider />
                 <Password />
