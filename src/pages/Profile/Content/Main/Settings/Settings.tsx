@@ -72,7 +72,7 @@ const Settings = () => {
                 <Appearance />
                 <Divider />
                 <EventColors />
-                <SaveButton text={'save settings'} disabled={isDirty} />
+                <SaveButton text={'save settings'} disabled={!isDirty} />
             </Stack>
         </FormProvider>
     )
