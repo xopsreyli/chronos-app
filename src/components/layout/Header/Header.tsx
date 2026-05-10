@@ -1,8 +1,9 @@
-import { AppBar, Container, Toolbar } from '@mui/material'
+import { AppBar, Container, Stack, Toolbar } from '@mui/material'
 import Logo from '../../ui/common/Logo/Logo.tsx'
 import AuthButtons from './AuthButtons/AuthButtons.tsx'
 import useUser from '../../../hooks/api/users/current/useUser/useUser.ts'
 import UserMenu from './UserMenu/UserMenu.tsx'
+import InvitesButton from './InvitesButton/InvitesButton.tsx'
 
 const Header = () => {
     const { data: user } = useUser()
@@ -15,7 +16,21 @@ const Header = () => {
                     sx={{ justifyContent: 'space-between' }}
                 >
                     <Logo />
-                    {user ? <UserMenu /> : <AuthButtons />}
+                    {user ? (
+                        <Stack
+                            direction={'row'}
+                            spacing={2}
+                            useFlexGap
+                            sx={{
+                                alignItems: 'center',
+                            }}
+                        >
+                            <InvitesButton />
+                            <UserMenu />
+                        </Stack>
+                    ) : (
+                        <AuthButtons />
+                    )}
                 </Toolbar>
             </Container>
         </AppBar>
