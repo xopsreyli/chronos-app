@@ -1,7 +1,7 @@
 import type { User } from '../../../../types/user/types.ts'
 
 const getUser = async (): Promise<User | null> => {
-    const response = await fetch(import.meta.env.VITE_APP_API + '/user', {
+    const response = await fetch(import.meta.env.VITE_APP_API + '/api/user', {
         method: 'GET',
         credentials: 'include',
     })

@@ -7,7 +7,7 @@ const updateCalendar = async (
 ): Promise<Calendar> => {
     const { id, ...data } = calendarUpdateData
     const response = await fetch(
-        import.meta.env.VITE_APP_API + `/calendars/${id}`,
+        import.meta.env.VITE_APP_API + `/api/calendars/${id}`,
         {
             method: 'PATCH',
             body: JSON.stringify(data),

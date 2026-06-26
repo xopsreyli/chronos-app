@@ -10,7 +10,7 @@ const getUsers = async (params: Params): Promise<User[]> => {
 
     const response = await fetch(
         import.meta.env.VITE_APP_API +
-            `/users?page=${page}&nickname=${nickname}`,
+            `/api/users?page=${page}&nickname=${nickname}`,
         {
             method: 'GET',
             credentials: 'include',

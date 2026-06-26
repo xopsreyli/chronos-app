@@ -2,7 +2,7 @@ import type { SignUpData } from '../../../types/auth/types.ts'
 
 const signUp = async (data: SignUpData): Promise<void> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + '/auth/signup',
+        import.meta.env.VITE_APP_API + '/api/auth/signup',
         {
             method: 'POST',
             body: JSON.stringify(data),

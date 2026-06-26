@@ -9,7 +9,7 @@ const updateEvent = async (
     data: EventUpdationData,
 ) => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + `/events/${id}?type=${type}`,
+        import.meta.env.VITE_APP_API + `/api/events/${id}?type=${type}`,
         {
             method: 'PATCH',
             body: JSON.stringify(data),

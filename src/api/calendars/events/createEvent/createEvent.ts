@@ -11,7 +11,7 @@ const createEvent = async (
 ): Promise<Event> => {
     const response = await fetch(
         import.meta.env.VITE_APP_API +
-            `/calendars/${calendarId}/events?type=${type}`,
+            `/api/calendars/${calendarId}/events?type=${type}`,
         {
             method: 'POST',
             body: JSON.stringify(data),

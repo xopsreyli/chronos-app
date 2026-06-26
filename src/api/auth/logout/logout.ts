@@ -1,6 +1,6 @@
 const logout = async (): Promise<void> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + '/auth/logout',
+        import.meta.env.VITE_APP_API + '/api/auth/logout',
         {
             method: 'POST',
             credentials: 'include',

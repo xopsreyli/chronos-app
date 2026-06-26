@@ -2,7 +2,7 @@ import type { Calendar } from '../../../types/calendar/types.ts'
 
 const getCalendar = async (id: number): Promise<Calendar> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + `/calendars/${id}`,
+        import.meta.env.VITE_APP_API + `/api/calendars/${id}`,
         {
             method: 'GET',
             credentials: 'include',

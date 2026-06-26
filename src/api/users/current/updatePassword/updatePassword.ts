@@ -2,7 +2,7 @@ import type { PasswordUpdationData } from '../../../../types/user/types.ts'
 
 const updatePassword = async (data: PasswordUpdationData): Promise<void> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + '/user/password',
+        import.meta.env.VITE_APP_API + '/api/user/password',
         {
             method: 'PATCH',
             body: JSON.stringify(data),

@@ -7,7 +7,7 @@ const updateSettings = async (
     data: SettingsUpdationData,
 ): Promise<Settings> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + '/user/settings',
+        import.meta.env.VITE_APP_API + '/api/user/settings',
         {
             method: 'PATCH',
             body: JSON.stringify(data),

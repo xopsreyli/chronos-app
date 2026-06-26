@@ -3,7 +3,7 @@ const respondToInvite = async (
     isAccepted: boolean,
 ): Promise<void> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + `/calendars/invites/${id}`,
+        import.meta.env.VITE_APP_API + `/api/calendars/invites/${id}`,
         {
             method: 'POST',
             body: JSON.stringify({

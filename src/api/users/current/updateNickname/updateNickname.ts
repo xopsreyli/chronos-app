@@ -5,7 +5,7 @@ import type {
 
 const updateNickname = async (data: NicknameUpdationData): Promise<User> => {
     const response = await fetch(
-        import.meta.env.VITE_APP_API + '/user/nickname',
+        import.meta.env.VITE_APP_API + '/api/user/nickname',
         {
             method: 'PATCH',
             body: JSON.stringify(data),

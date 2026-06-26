@@ -5,7 +5,7 @@ type CalendarCreationData = Omit<Calendar, 'id'>
 const createCalendar = async (
     data: CalendarCreationData,
 ): Promise<Calendar> => {
-    const response = await fetch(import.meta.env.VITE_APP_API + '/calendars', {
+    const response = await fetch(import.meta.env.VITE_APP_API + '/api/calendars', {
         method: 'POST',
         body: JSON.stringify({ ...data }),
         headers: {
