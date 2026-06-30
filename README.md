@@ -4,7 +4,7 @@ Chronos is a time management application that combines a calendar, a task tracke
 
 🔗 **Live demo:** [https://xopsreyli.github.io/chronos-app/]
 
-![Chronos preview](add-your-screenshot-path-here.png)
+![Chronos preview](docs/img/intro.png)
 
 ## Overview
 
