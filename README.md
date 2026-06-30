@@ -3,7 +3,8 @@
 Chronos is a time management application that combines a calendar, a task tracker, and a reminder system in a single, unified interface. It lets you plan your time across multiple views and manage three distinct types of events depending on what you're trying to organize.
 
 🔗 **Live demo:** [Chronos](https://xopsreyli.github.io/chronos-app/)
-!ATTENTION: first request takes about 1 minute to wake up server, pls wait
+
+**!ATTENTION!**: first request takes about 1 minute to wake up server, pls wait.
 
 ![Chronos preview](docs/img/intro.png)
 
