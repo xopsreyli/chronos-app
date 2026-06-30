@@ -1,73 +1,40 @@
-# React + TypeScript + Vite
+# Chronos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Chronos is a time management application that combines a calendar, a task tracker, and a reminder system in a single, unified interface. It lets you plan your time across multiple views and manage three distinct types of events depending on what you're trying to organize.
 
-Currently, two official plugins are available:
+🔗 **Live demo:** [https://xopsreyli.github.io/chronos-app/]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+![Chronos preview](add-your-screenshot-path-here.png)
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Most calendar apps treat everything as the same kind of "event," and most to-do apps have no real sense of time. Chronos sits in between: it's built around the idea that not everything on your schedule is the same kind of thing.
 
-## Expanding the ESLint configuration
+- **Arrangements** — events that involve other people or a fixed time and place (meetings, calls, appointments)
+- **Tasks** — things you need to get done, optionally with a deadline, that can be marked complete
+- **Reminders** — lightweight, time-based nudges that don't need full event details
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+These three types are managed in one cohesive app with five different views to match however you like to plan: Upcoming, Day, Week, Month, and Year.
 
-```js
-export default defineConfig([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
+## Features
 
-            // Remove tseslint.configs.recommended and replace with this
-            tseslint.configs.recommendedTypeChecked,
-            // Alternatively, use this for stricter rules
-            tseslint.configs.strictTypeChecked,
-            // Optionally, add this for stylistic rules
-            tseslint.configs.stylisticTypeChecked,
+- Multiple calendar views: Upcoming, Day, Week, Month, Year
+- Three distinct event types — Arrangements, Tasks, and Reminders — each with its own behavior and fields
+- Fast, validated forms for creating and editing events
+- Clean, responsive UI built with Material UI
 
-            // Other configs...
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-])
-```
+## Tech Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Frontend**
+- React + Vite + TypeScript
+- Material UI for components and styling
+- Zustand for client-side state management
+- nuqs for syncing state to the URL
+- React Hook Form + Zod for form handling and validation
+- React Router for routing
+- Day.js for date and time handling
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-    globalIgnores(['dist']),
-    {
-        files: ['**/*.{ts,tsx}'],
-        extends: [
-            // Other configs...
-            // Enable lint rules for React
-            reactX.configs['recommended-typescript'],
-            // Enable lint rules for React DOM
-            reactDom.configs.recommended,
-        ],
-        languageOptions: {
-            parserOptions: {
-                project: ['./tsconfig.node.json', './tsconfig.app.json'],
-                tsconfigRootDir: import.meta.dirname,
-            },
-            // other options...
-        },
-    },
-])
-```
+[**Backend**](https://github.com/xopsreyli/chronos-api)
+- Express.js
+- Prisma ORM
+- PostgreSQL
